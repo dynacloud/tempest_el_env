@@ -6,7 +6,7 @@ tenant_id=$(curl -H "X-Auth-Token:$token_id" http://$keystone_url:5000/v2.0/tena
 token_id2=$(curl -k -X 'POST' -v http://$keystone_url:5000/v2.0/tokens -d '{"auth":{"passwordCredentials":{"username": "admin", "password":"admin"}, "tenantId":'\""$tenant_id"\"'}}' -H 'Content-type: application/json' | awk '{print $8}' | grep -oP '"\K[^"\047]+(?=["\047])')
 ex_recent=$(curl -v -X 'GET' -H "X-Auth-Token:$token_id2"  http://$keystone_url:9696/v2.0/networks |python -mjson.tool |grep id | sed -n '1p' | awk '{print $2;}'|grep -oP '"\K[^"\047]+(?=["\047])')
 if [[ ! -z "$ex_recent" ]] ; then
-curl -v -X 'DELETE' -H "X-Auth-Token:$token_id2"  http://192.168.103.187:9696/v2.0/networks/$ex_recent
+curl -v -X 'DELETE' -H "X-Auth-Token:$token_id2"  http://$keystone_url:9696/v2.0/networks/$ex_recent
 fi
 
 ex_net_id=$(curl -v -X 'POST' -H "X-Auth-Token:$token_id2"  http://$keystone_url:9696/v2.0/networks -d '{"network":{"name": "provider_network1", "provider:physical_network":"external", "router:external":true, "shared": false, "provider:network_type": "flat"}}' -H 'Content-type: application/json'  | python -mjson.tool | grep id | sed -n '1p' | awk '{print $2;}'|grep -oP '"\K[^"\047]+(?=["\047])')
