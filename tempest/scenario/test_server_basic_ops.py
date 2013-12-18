@@ -52,12 +52,6 @@ class TestServerBasicOps(manager.OfficialClientTest):
         # Add rules to the security group
         self.create_loginable_secgroup_rule(secgroup_id=self.secgroup.id)
 
-    #def boot_instance(self):
-        #create_kwargs = {
-            #'key_name': self.keypair.id
-        #}
-        #instance = self.create_server(create_kwargs=create_kwargs)
-        #self.set_resource('instance', instance)
     
     def _image_create(self, name, fmt, fmt2, path, properties={}):
         name = rand_name('%s-' % name)
