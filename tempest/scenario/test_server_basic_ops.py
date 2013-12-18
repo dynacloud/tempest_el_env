@@ -19,7 +19,7 @@ from tempest.common.utils import data_utils
 from tempest.openstack.common import log as logging
 from tempest.scenario import manager
 from tempest.test import services
-
+from tempest.common.utils.data_utils import rand_name
 LOG = logging.getLogger(__name__)
 
 
@@ -52,11 +52,44 @@ class TestServerBasicOps(manager.OfficialClientTest):
         # Add rules to the security group
         self.create_loginable_secgroup_rule(secgroup_id=self.secgroup.id)
 
-    def boot_instance(self):
-        create_kwargs = {
-            'key_name': self.keypair.id
+    #def boot_instance(self):
+        #create_kwargs = {
+            #'key_name': self.keypair.id
+        #}
+        #instance = self.create_server(create_kwargs=create_kwargs)
+        #self.set_resource('instance', instance)
+    
+    def _image_create(self, name, fmt, fmt2, path, properties={}):
+        name = rand_name('%s-' % name)
+        image_file = open(path, 'rb')
+        self.addCleanup(image_file.close)
+        params = {
+            'name': name,
+            'container_format': fmt2,
+            'disk_format': fmt,
+            'is_public': 'True',
         }
-        instance = self.create_server(create_kwargs=create_kwargs)
+        params.update(properties)
+        image = self.image_client.images.create(**params)
+        self.addCleanup(self.image_client.images.delete, image)
+        self.assertEqual("queued", image.status)
+        image.update(data=image_file)
+        return image.id
+
+    def glance_image_create(self):
+        ami_img_path = self.config.scenario.img_dir + "/" + \
+            self.config.scenario.ami_img_file
+        LOG.debug("paths: ami: %s"
+                  % (ami_img_path))
+
+        properties = {}
+        self.image = self._image_create('scenario-qcow2', 'qcow2', 'ovf',
+                                        path=ami_img_path,
+                                        properties=properties)
+    def boot_instance(self):
+        create_kwargs = {'key_name': self.keypair.id}
+        instance = self.create_server(image=self.image,
+                                         create_kwargs=create_kwargs)    
         self.set_resource('instance', instance)
 
     def pause_server(self):
@@ -104,6 +137,7 @@ class TestServerBasicOps(manager.OfficialClientTest):
     def test_server_basicops(self):
         self.add_keypair()
         self.create_security_group()
+        self.glance_image_create()
         self.boot_instance()
         self.pause_server()
         self.unpause_server()
