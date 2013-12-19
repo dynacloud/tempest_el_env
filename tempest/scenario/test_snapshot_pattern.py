@@ -17,9 +17,12 @@
 
 from tempest.scenario import manager
 from tempest.test import services
+from tempest.common.utils.data_utils import rand_name
+from tempest.openstack.common import log as logging
 
+LOG = logging.getLogger(__name__)
 
-class TestSnapshotPattern(manager.OfficialClientTest):
+class TestSnapshotPattern(manager.NetworkScenarioTest):
     """
     This test is for snapshotting an instance and booting with it.
     The following is the scenario outline:
@@ -29,12 +32,59 @@ class TestSnapshotPattern(manager.OfficialClientTest):
      * check the existence of the timestamp file in the second instance
 
     """
+    @classmethod
+    def check_preconditions(cls):
+        super(TestSnapshotPattern, cls).check_preconditions()
+        cfg = cls.config.network
+        if not (cfg.tenant_networks_reachable or cfg.public_network_id):
+            msg = ('Either tenant_networks_reachable must be "true", or '
+                   'public_network_id must be defined.')
+            cls.enabled = False
+            raise cls.skipException(msg)
+
+    @classmethod
+    def setUpClass(cls):
+        super(TestSnapshotPattern, cls).setUpClass()
+        cls.check_preconditions()
+        # TODO(mnewby) Consider looking up entities as needed instead
+        # of storing them as collections on the class.
+        cls.floating_ips = {}
+
+
+    def _image_create(self, name, fmt, fmt2, path, properties={}):
+        name = rand_name('%s-' % name)
+        image_file = open(path, 'rb')
+        self.addCleanup(image_file.close)
+        params = {
+            'name': name,
+            'container_format': fmt2,
+            'disk_format': fmt,
+            'is_public': 'True',
+        }
+        params.update(properties)
+        image = self.image_client.images.create(**params)
+        self.addCleanup(self.image_client.images.delete, image)
+        self.assertEqual("queued", image.status)
+        image.update(data=image_file)
+        return image.id
+
+    def glance_image_create(self):
+        ami_img_path = self.config.scenario.img_dir + "/" + \
+            self.config.scenario.ami_img_file
+        LOG.debug("paths: ami: %s"
+                  % (ami_img_path))
+
+        properties = {}
+        self.image = self._image_create('scenario-qcow2', 'qcow2', 'ovf',
+                                        path=ami_img_path,
+                                        properties=properties)
 
     def _boot_image(self, image_id):
         create_kwargs = {
             'key_name': self.keypair.name
         }
-        return self.create_server(image=image_id, create_kwargs=create_kwargs)
+        self.server = self.create_server(image=image_id, create_kwargs=create_kwargs)
+        #return self.server
 
     def _add_keypair(self):
         self.keypair = self.create_keypair()
@@ -53,40 +103,40 @@ class TestSnapshotPattern(manager.OfficialClientTest):
         got_timestamp = ssh_client.exec_command('cat /tmp/timestamp')
         self.assertEqual(self.timestamp, got_timestamp)
 
-    def _create_floating_ip(self):
-        floating_ip = self.compute_client.floating_ips.create()
-        self.addCleanup(floating_ip.delete)
-        return floating_ip
 
-    def _set_floating_ip_to_server(self, server, floating_ip):
-        server.add_floating_ip(floating_ip)
+    def _create_floating_ip2(self):
+        public_network_id = self.config.network.public_network_id
+        server = self.server
+        self.floating_ip = self._create_floating_ip(server, public_network_id)
+        floating_ip = self.floating_ip
+        self.floating_ips.setdefault(server, [])
+        self.floating_ips[server].append(floating_ip)
+        #return floating_ip      
 
     @services('compute', 'network', 'image')
     def test_snapshot_pattern(self):
         # prepare for booting a instance
         self._add_keypair()
+        self.glance_image_create()
         self.create_loginable_secgroup_rule()
 
         # boot a instance and create a timestamp file in it
-        server = self._boot_image(self.config.compute.image_ref)
+        self._boot_image(self.image)
         if self.config.compute.use_floatingip_for_ssh:
-            fip_for_server = self._create_floating_ip()
-            self._set_floating_ip_to_server(server, fip_for_server)
-            self._write_timestamp(fip_for_server.ip)
+            self._create_floating_ip2()
+            self._write_timestamp(self.floating_ip.floating_ip_address)
         else:
-            self._write_timestamp(server)
+            self._write_timestamp(self.server)
 
         # snapshot the instance
-        snapshot_image = self.create_server_snapshot(server=server)
+        snapshot_image = self.create_server_snapshot(server=self.server)
 
         # boot a second instance from the snapshot
-        server_from_snapshot = self._boot_image(snapshot_image.id)
+        self._boot_image(snapshot_image.id)
 
         # check the existence of the timestamp file in the second instance
         if self.config.compute.use_floatingip_for_ssh:
-            fip_for_snapshot = self._create_floating_ip()
-            self._set_floating_ip_to_server(server_from_snapshot,
-                                            fip_for_snapshot)
-            self._check_timestamp(fip_for_snapshot.ip)
+            self._create_floating_ip2()
+            self._check_timestamp(self.floating_ip.floating_ip_address)
         else:
-            self._check_timestamp(server_from_snapshot)
+            self._check_timestamp(self.server)
