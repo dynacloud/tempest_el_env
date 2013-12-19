@@ -57,8 +57,8 @@ class TestDashboardBasicOps(manager.OfficialClientTest):
         req = urllib2.Request(self.config.dashboard.login_url)
         req.add_header('Content-type', 'application/x-www-form-urlencoded')
         req.add_header('Referer', self.config.dashboard.dashboard_url)
-        params = {'username': self.config.identity.username,
-                  'password': self.config.identity.password,
+        params = {'username': self.config.identity.admin_username,
+                  'password': self.config.identity.admin_password,
                   'region': region,
                   'csrfmiddlewaretoken': csrf_token}
         self.opener.open(req, urllib.urlencode(params))
