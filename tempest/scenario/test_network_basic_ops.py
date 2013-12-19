@@ -24,6 +24,7 @@ from tempest.openstack.common import log as logging
 from tempest.scenario import manager
 from tempest.test import attr
 from tempest.test import services
+from tempest.common.utils.data_utils import rand_name
 
 LOG = logging.getLogger(__name__)
 
@@ -198,7 +199,38 @@ class TestNetworkBasicOps(manager.NetworkScenarioTest):
             self.assertIn(myrouter.name, seen_router_names)
             self.assertIn(myrouter.id, seen_router_ids)
 
-    def _create_server(self, name, network):
+
+    def _image_create(self, name, fmt, fmt2, path, properties={}):
+        name = rand_name('%s-' % name)
+        image_file = open(path, 'rb')
+        self.addCleanup(image_file.close)
+        params = {
+            'name': name,
+            'container_format': fmt2,
+            'disk_format': fmt,
+            'is_public': 'True',
+        }
+        params.update(properties)
+        image = self.image_client.images.create(**params)
+        self.addCleanup(self.image_client.images.delete, image)
+        self.assertEqual("queued", image.status)
+        image.update(data=image_file)
+        return image.id
+
+    def glance_image_create(self):
+        ami_img_path = self.config.scenario.img_dir + "/" + \
+            self.config.scenario.ami_img_file
+        LOG.debug("paths: ami: %s"
+                  % (ami_img_path))
+
+        properties = {}
+        self.image = self._image_create('scenario-qcow2', 'qcow2', 'ovf',
+                                        path=ami_img_path,
+                                        properties=properties)
+
+
+
+    def _create_server(self, name, network, image):
         tenant_id = network.tenant_id
         keypair_name = self.keypairs[tenant_id].name
         security_groups = [self.security_groups[tenant_id].name]
@@ -209,13 +241,13 @@ class TestNetworkBasicOps(manager.NetworkScenarioTest):
             'key_name': keypair_name,
             'security_groups': security_groups,
         }
-        server = self.create_server(name=name, create_kwargs=create_kwargs)
+        server = self.create_server(name=name, image=image, create_kwargs=create_kwargs)
         return server
 
-    def _create_servers(self):
+    def _create_servers(self, image):
         for i, network in enumerate(self.networks):
             name = data_utils.rand_name('server-smoke-%d-' % i)
-            server = self._create_server(name, network)
+            server = self._create_server(name, network,image)
             self.servers.append(server)
 
     def _check_tenant_network_connectivity(self):
@@ -264,7 +296,8 @@ class TestNetworkBasicOps(manager.NetworkScenarioTest):
         self._create_security_groups()
         self._create_networks()
         self._check_networks()
-        self._create_servers()
+        self.glance_image_create()
+        self._create_servers(self.image)
         self._assign_floating_ips()
         self._check_public_network_connectivity()
         self._check_tenant_network_connectivity()
