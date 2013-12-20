@@ -15,9 +15,11 @@
 from tempest.common.utils import data_utils
 from tempest.scenario import manager
 from tempest.test import services
+from tempest.common.utils.data_utils import rand_name
 
+#LOG = logging.getLogger(__name__)
 
-class TestVolumeBootPattern(manager.OfficialClientTest):
+class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
     """
     This test case attempts to reproduce the following steps:
@@ -32,8 +34,58 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
      * Check written content in the instance booted from snapshot
     """
 
+    @classmethod
+    def check_preconditions(cls):
+        super(TestVolumeBootPattern, cls).check_preconditions()
+        cfg = cls.config.network
+        if not (cfg.tenant_networks_reachable or cfg.public_network_id):
+            msg = ('Either tenant_networks_reachable must be "true", or '
+                   'public_network_id must be defined.')
+            cls.enabled = False
+            raise cls.skipException(msg)
+
+    @classmethod
+    def setUpClass(cls):
+        super(TestVolumeBootPattern, cls).setUpClass()
+        cls.check_preconditions()
+        # TODO(mnewby) Consider looking up entities as needed instead
+        # of storing them as collections on the class.
+        cls.floating_ips = {}
+    
+
+    def _image_create(self, name, fmt, fmt2, path, properties={}):
+        name = rand_name('%s-' % name)
+        image_file = open(path, 'rb')
+        self.addCleanup(image_file.close)
+        params = {
+            'name': name,
+            'container_format': fmt2,
+            'disk_format': fmt,
+            'is_public': 'True',
+        }
+        params.update(properties)
+        image = self.image_client.images.create(**params)
+        self.addCleanup(self.image_client.images.delete, image)
+        self.assertEqual("queued", image.status)
+        image.update(data=image_file)
+        return image.id
+
+    def glance_image_create(self):
+        ami_img_path = self.config.scenario.img_dir + "/" + \
+            self.config.scenario.ami_img_file
+        #LOG.debug("paths: ami: %s"
+                  #% (ami_img_path))
+
+        properties = {}
+        self.image = self._image_create('scenario-qcow2', 'qcow2', 'ovf',
+                                        path=ami_img_path,
+                                        properties=properties)
+         
+        return self.image
+
     def _create_volume_from_image(self):
-        img_uuid = self.config.compute.image_ref
+        img_uuid = self.glance_image_create()
+        #img_uuid = self.config.compute.image_ref
         vol_name = data_utils.rand_name('volume-origin')
         return self.create_volume(name=vol_name, imageRef=img_uuid)
 
@@ -49,7 +101,8 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
             'block_device_mapping': bd_map,
             'key_name': keypair.name
         }
-        return self.create_server(create_kwargs=create_kwargs)
+        self.server = self.create_server(create_kwargs=create_kwargs)
+        return self.server
 
     def _create_snapshot_from_volume(self, vol_id):
         volume_snapshots = self.volume_client.volume_snapshots
@@ -85,15 +138,23 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
                                 v.id,
                                 'available')
 
-    def _ssh_to_server(self, server, keypair):
+    def _create_floating_ip2(self):
+        public_network_id = self.config.network.public_network_id
+        server = self.server
+        self.floating_ip = self._create_floating_ip(server, public_network_id)
+        floating_ip = self.floating_ip
+        self.floating_ips.setdefault(server, [])
+        self.floating_ips[server].append(floating_ip)
+        #return  floating_ip
+
+    def _ssh_to_server(self, server, keypair, floating_ip):
         if self.config.compute.use_floatingip_for_ssh:
-            floating_ip = self.compute_client.floating_ips.create()
-            fip_name = data_utils.rand_name('scenario-fip')
-            self.set_resource(fip_name, floating_ip)
-            server.add_floating_ip(floating_ip)
-            ip = floating_ip.ip
+            self.floating_ip = floating_ip
+            #fip_name = data_utils.rand_name('scenario-fip')
+            #self.set_resource(fip_name, self.floating_ip)
+            ip = self.floating_ip.floating_ip_address
         else:
-            network_name_for_ssh = self.config.compute.network_for_ssh
+            network_name_for_ssh = self.config.compute.public_network_id
             ip = server.networks[network_name_for_ssh][0]
 
         client = self.get_remote_client(ip,
@@ -127,9 +188,10 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
         instance_1st = self._boot_instance_from_volume(volume_origin.id,
                                                        keypair)
 
+        self._create_floating_ip2()
         # write content to volume on instance
         ssh_client_for_instance_1st = self._ssh_to_server(instance_1st,
-                                                          keypair)
+                                                          keypair, self.floating_ip)
         text = self._write_text(ssh_client_for_instance_1st)
 
         # delete instance
@@ -138,22 +200,26 @@ class TestVolumeBootPattern(manager.OfficialClientTest):
         # create a 2nd instance from volume
         instance_2nd = self._boot_instance_from_volume(volume_origin.id,
                                                        keypair)
-
+        self._create_floating_ip2()
         # check the content of written file
         ssh_client_for_instance_2nd = self._ssh_to_server(instance_2nd,
-                                                          keypair)
+                                                          keypair, self.floating_ip)
         self._check_content_of_written_file(ssh_client_for_instance_2nd, text)
 
         # snapshot a volume
         snapshot = self._create_snapshot_from_volume(volume_origin.id)
 
+        
+
         # create a 3rd instance from snapshot
+        
         volume = self._create_volume_from_snapshot(snapshot.id)
         instance_from_snapshot = self._boot_instance_from_volume(volume.id,
                                                                  keypair)
 
+        self._create_floating_ip2()
         # check the content of written file
-        ssh_client = self._ssh_to_server(instance_from_snapshot, keypair)
+        ssh_client = self._ssh_to_server(instance_from_snapshot, keypair, self.floating_ip)
         self._check_content_of_written_file(ssh_client, text)
 
         # NOTE(gfidente): ensure resources are in clean state for
