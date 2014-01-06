@@ -80,16 +80,16 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         self.image = self._image_create('scenario-qcow2', 'qcow2', 'ovf',
                                         path=ami_img_path,
                                         properties=properties)
-         
-        return self.image
-
-    def _create_volume_from_image(self):
-        img_uuid = self.glance_image_create()
+	image_id = self.image
+	return image_id         
+        
+    def _create_volume_from_image(self,image_id):
+        img_uuid = image_id
         #img_uuid = self.config.compute.image_ref
         vol_name = data_utils.rand_name('volume-origin')
         return self.create_volume(name=vol_name, imageRef=img_uuid)
 
-    def _boot_instance_from_volume(self, vol_id, keypair):
+    def _boot_instance_from_volume(self, image_id, vol_id, keypair):
         # NOTE(gfidente): the syntax for block_device_mapping is
         # dev_name=id:type:size:delete_on_terminate
         # where type needs to be "snap" if the server is booted
@@ -101,7 +101,8 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
             'block_device_mapping': bd_map,
             'key_name': keypair.name
         }
-        self.server = self.create_server(create_kwargs=create_kwargs)
+        image = image_id
+        self.server = self.create_server(image=image, create_kwargs=create_kwargs)
         return self.server
 
     def _create_snapshot_from_volume(self, vol_id):
@@ -184,8 +185,9 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         self.create_loginable_secgroup_rule()
 
         # create an instance from volume
-        volume_origin = self._create_volume_from_image()
-        instance_1st = self._boot_instance_from_volume(volume_origin.id,
+        image_id = self.glance_image_create()
+        volume_origin = self._create_volume_from_image(image_id)
+        instance_1st = self._boot_instance_from_volume(image_id,volume_origin.id,
                                                        keypair)
 
         self._create_floating_ip2()
@@ -198,7 +200,7 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         self._delete_server(instance_1st)
 
         # create a 2nd instance from volume
-        instance_2nd = self._boot_instance_from_volume(volume_origin.id,
+        instance_2nd = self._boot_instance_from_volume(image_id,volume_origin.id,
                                                        keypair)
         self._create_floating_ip2()
         # check the content of written file
