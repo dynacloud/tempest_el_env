@@ -216,7 +216,7 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         # create a 3rd instance from snapshot
         
         volume = self._create_volume_from_snapshot(snapshot.id)
-        instance_from_snapshot = self._boot_instance_from_volume(volume.id,
+        instance_from_snapshot = self._boot_instance_from_volume(image_id,volume.id,
                                                                  keypair)
 
         self._create_floating_ip2()
