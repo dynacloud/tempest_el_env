@@ -1,3 +1,4 @@
+
 # vim: tabstop=4 shiftwidth=4 softtabstop=4
 
 # Copyright 2013 NEC Corporation
@@ -19,7 +20,7 @@ from tempest.common.utils.data_utils import rand_name
 from tempest.openstack.common import log as logging
 from tempest.scenario import manager
 from tempest.test import services
-
+from time import time as _time, sleep as _sleep
 
 LOG = logging.getLogger(__name__)
 
@@ -130,6 +131,8 @@ class TestMinimumBasicScenario(manager.NetworkScenarioTest):
         self.assertEqual(self.volume.id, volume.id)
         self._wait_for_volume_status('in-use')
 
+
+
     def nova_reboot(self):
         self.server.reboot()
         self._wait_for_server_status('ACTIVE')
@@ -141,12 +144,20 @@ class TestMinimumBasicScenario(manager.NetworkScenarioTest):
         floating_ip = self.floating_ip
         self.floating_ips.setdefault(server, [])
         self.floating_ips[server].append(floating_ip)
+     
 
     def nova_floating_ip_add(self):
-        self.server.add_floating_ip(self.floating_ip)
+        self.server.add_floating_ip(self.floating_ip)     
 
     def ssh_to_server(self):
-        self.linux_client = self.get_remote_client(self.floating_ip.floating_ip_address)
+        #self.linux_client = self.get_remote_client(self.floating_ip.floating_ip_address)
+        try:
+            self.linux_client = self.get_remote_client(self.floating_ip.floating_ip_address)
+        except Exception:
+            LOG.exception('ssh to server failed')
+            self._log_console_output()
+            raise
+        
 
     def check_partitions(self):
         partitions = self.linux_client.get_partitions()
@@ -166,6 +177,7 @@ class TestMinimumBasicScenario(manager.NetworkScenarioTest):
         #self.image="9ce97f3b-2303-4d7c-9728-5fd48a0426e5"
         self.nova_keypair_add()
         self.nova_boot()
+        self.nova_floating_ip_create()
         self.nova_list()
         self.nova_show()
         self.cinder_create()
@@ -175,8 +187,7 @@ class TestMinimumBasicScenario(manager.NetworkScenarioTest):
         self.cinder_show()
         self.nova_reboot()
 
-        self.nova_floating_ip_create()
-        #self.nova_floating_ip_add()
+        #self.nova_floating_ip_create()
         self.create_loginable_secgroup_rule()
         self.ssh_to_server()
         self.check_partitions()
