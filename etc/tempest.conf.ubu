@@ -1,6 +1,6 @@
 [DEFAULT]
-#log_config = /home/os1/tempest/etc/logging.conf.sample
-debug = true
+#log_config = /opt/stack/tempest/etc/logging.conf
+
 # disable logging to the stderr
 use_stderr = false
 
@@ -77,11 +77,11 @@ allow_tenant_reuse = true
 # distinct images/flavors.
 image_ref = c7cad785-a4db-49c5-ab24-482c00c4265b
 image_ref_alt = 73d956e1-2988-4243-87f1-3133a9117550
-flavor_ref = 1
+flavor_ref = 2
 flavor_ref_alt = 1
 
 # User name used to authenticate to an instance
-image_ssh_user =  cirros
+image_ssh_user =  ubuntu
 
 # Password used to authenticate to an instance
 image_ssh_password = password
@@ -106,7 +106,7 @@ build_timeout = 600
 run_ssh = true
 
 # Name of a user used to authenticate to an instance.
-ssh_user = cirros
+ssh_user = ubuntu
 
 # Visible fixed network name
 fixed_network_name = net3
@@ -241,7 +241,7 @@ tenant_network_mask_bits = 24
 tenant_networks_reachable = false
 
 # Id of the public network that provides external connectivity.
-public_network_id = ea22bddd-7983-40d9-810f-d368c82fe7b8
+public_network_id = b08b7237-e042-471b-b32d-e41c1186792f
 
 # Id of a shared public router that provides external connectivity.
 # A shared public router would commonly be used where IP namespaces
@@ -402,10 +402,10 @@ login_url = 'http://192.168.103.187/auth/login/'
 img_dir = /home/os1/cloud-images
 
 # AMI image file name
-ami_img_file = cirros-0.3.0-x86_64-disk.img
+ami_img_file = precise-server-cloudimg-amd64-disk1.img
 
 # ARI image file name
-ari_img_file = cirros-0.3.0-x86_64-disk.dsk
+ari_img_file = precise-server-cloudimg-amd64-disk1.img
 
 # AKI image file name
 aki_img_file = precise-server-cloudimg-amd64-disk1.img
@@ -413,7 +413,7 @@ aki_img_file = precise-server-cloudimg-amd64-disk1.img
 # ubuntu qcow image file name
 #qcow_img_file = precise-server-cloudimg-amd64-disk1.img
 # ssh username for the image file
-ssh_user = cirros
+ssh_user = ubuntu
 
 # specifies how many resources to request at once. Used for large operations
 # testing."
