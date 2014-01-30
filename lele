@@ -1,5 +1,0 @@
-#!/bin/bash
-for i in {1..5}
-do
-   testr run --parallel tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern
-done
