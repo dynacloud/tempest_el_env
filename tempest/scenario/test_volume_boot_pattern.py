@@ -16,8 +16,7 @@ from tempest.common.utils import data_utils
 from tempest.scenario import manager
 from tempest.test import services
 from tempest.common.utils.data_utils import rand_name
-
-#LOG = logging.getLogger(__name__)
+import time
 
 class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
@@ -72,12 +71,12 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
     def glance_image_create(self):
         ami_img_path = self.config.scenario.img_dir + "/" + \
-            self.config.scenario.ami_img_file
+            self.config.scenario.ari_img_file
         #LOG.debug("paths: ami: %s"
                   #% (ami_img_path))
 
         properties = {}
-        self.image = self._image_create('scenario-qcow2', 'qcow2', 'ovf',
+        self.image = self._image_create('scenario-qcow2', 'raw', 'bare',
                                         path=ami_img_path,
                                         properties=properties)
 	image_id = self.image
@@ -117,6 +116,13 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
                             'available')
         return snap
 
+    def _delete_volume_snapshot(self, snaps):
+        #snaps = self.volume_client.volume_snapshots.list()
+        #volume_snapshots = self.volume_client.volume_snapshots
+        for v in snaps:
+            self.volume_client.volume_snapshots.delete(v)    
+
+     
     def _create_volume_from_snapshot(self, snap_id):
         vol_name = data_utils.rand_name('volume')
         return self.create_volume(name=vol_name, snapshot_id=snap_id)
@@ -138,6 +144,12 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
             self.status_timeout(self.volume_client.volumes,
                                 v.id,
                                 'available')
+    
+    def _delete_volumes(self, volumes):
+        for v in volumes:
+            self.volume_client.volumes.delete(v)
+            
+
 
     def _create_floating_ip2(self):
         public_network_id = self.config.network.public_network_id
@@ -183,7 +195,6 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
     def test_volume_boot_pattern(self):
         keypair = self.create_keypair()
         self.create_loginable_secgroup_rule()
-
         # create an instance from volume
         image_id = self.glance_image_create()
         volume_origin = self._create_volume_from_image(image_id)
@@ -211,7 +222,7 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         # snapshot a volume
         snapshot = self._create_snapshot_from_volume(volume_origin.id)
 
-        
+        time.sleep(1)
 
         # create a 3rd instance from snapshot
         
@@ -226,5 +237,15 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
         # NOTE(gfidente): ensure resources are in clean state for
         # deletion operations to succeed
-        self._stop_instances([instance_2nd, instance_from_snapshot])
-        self._detach_volumes([volume_origin, volume])
+        self._delete_server(instance_from_snapshot)
+        self._delete_server(instance_2nd)
+
+
+        self._delete_volumes([volume])
+        
+ 
+       
+        self._delete_volume_snapshot([snapshot])
+
+        time.sleep(5)
+        #self._delete_volumes([volume_origin])
