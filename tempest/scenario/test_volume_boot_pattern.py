@@ -16,7 +16,6 @@ from tempest.common.utils import data_utils
 from tempest.scenario import manager
 from tempest.test import services
 from tempest.common.utils.data_utils import rand_name
-import time
 
 class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
@@ -237,15 +236,5 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
         # NOTE(gfidente): ensure resources are in clean state for
         # deletion operations to succeed
-        self._delete_server(instance_from_snapshot)
-        self._delete_server(instance_2nd)
-
-
-        self._delete_volumes([volume])
-        
- 
-       
-        self._delete_volume_snapshot([snapshot])
-
-        time.sleep(5)
-        #self._delete_volumes([volume_origin])
+        self._stop_instances([instance_2nd, instance_from_snapshot])
+        self._detach_volumes([volume_origin, volume])
