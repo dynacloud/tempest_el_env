@@ -1,0 +1,46 @@
+time: 2014-01-06 13:06:43.154671Z
+tags: worker-0
+test: tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,image,volume]
+time: 2014-01-06 13:13:45.209415Z
+failure: tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,image,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+3A3
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 196, in test_volume_boot_pattern
+    keypair, self.floating_ip)
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 162, in _ssh_to_server
+    private_key=keypair.private_key)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 475, in get_remote_client
+    return RemoteClient(ip, username, pkey=private_key)
+  File "/home/os1/tempest/tempest/common/utils/linux/remote_client.py", line 47, in __init__
+    if not self.ssh_client.test_connection_auth():
+  File "/home/os1/tempest/tempest/common/ssh.py", line 149, in test_connection_auth
+    connection = self._get_ssh_connection()
+  File "/home/os1/tempest/tempest/common/ssh.py", line 77, in _get_ssh_connection
+    password=self.password)
+SSHTimeout: Connection to the 10.10.13.200 via SSH timed out.
+User: cirros, Password: None
+0
+]
+tags: -worker-0
+time: 2014-01-06 13:14:15.963740Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-06 13:14:15.963740Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

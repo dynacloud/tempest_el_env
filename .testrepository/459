@@ -1,0 +1,48 @@
+time: 2014-01-30 13:05:26.893580Z
+tags: worker-0
+test: setUpClass (tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern)
+time: 2014-01-30 13:05:26.893580Z
+failure: setUpClass (tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+6F0
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 48, in setUpClass
+    super(TestVolumeBootPattern, cls).setUpClass()
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 500, in setUpClass
+    super(NetworkScenarioTest, cls).setUpClass()
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 209, in setUpClass
+    __name__, tempest_client=False)
+  File "/home/os1/tempest/tempest/common/isolated_creds.py", line 44, in __init__
+    self._get_admin_clients())
+  File "/home/os1/tempest/tempest/common/isolated_creds.py", line 76, in _get_admin_clients
+    admin_clients = self._get_official_admin_clients()
+  File "/home/os1/tempest/tempest/common/isolated_creds.py", line 56, in _get_official_admin_clients
+    insecure=dscv)
+  File "/usr/local/lib/python2.7/dist-packages/keystoneclient/v2_0/client.py", line 139, in __init__
+    self.authenticate()
+  File "/usr/local/lib/python2.7/dist-packages/keystoneclient/httpclient.py", line 468, in authenticate
+    resp, body = self.get_raw_token_from_identity_service(**kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/keystoneclient/v2_0/client.py", line 162, in get_raw_token_from_identity_service
+    token=token)
+  File "/usr/local/lib/python2.7/dist-packages/keystoneclient/v2_0/client.py", line 197, in _base_authN
+    resp, body = self.request(url, 'POST', body=params, headers=headers)
+  File "/usr/local/lib/python2.7/dist-packages/keystoneclient/httpclient.py", line 610, in request
+    **request_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/keystoneclient/httpclient.py", line 124, in request
+    raise exceptions.from_response(resp, method, url)
+Unauthorized: The request you have made requires authentication. (HTTP 401)
+0
+]
+tags: -worker-0
+time: 2014-01-30 13:05:26.947616Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-30 13:05:26.947616Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

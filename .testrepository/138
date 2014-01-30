@@ -1,0 +1,48 @@
+time: 2014-01-06 12:51:34.213204Z
+tags: worker-0
+test: tempest.scenario.test_network_quotas.TestNetworkQuotaBasic.test_create_network_until_quota_hit[network]
+time: 2014-01-06 12:51:37.896741Z
+successful: tempest.scenario.test_network_quotas.TestNetworkQuotaBasic.test_create_network_until_quota_hit[network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0
+time: 2014-01-06 12:51:37.899533Z
+tags: worker-0
+test: tempest.scenario.test_network_quotas.TestNetworkQuotaBasic.test_create_ports_until_quota_hit[network]
+time: 2014-01-06 12:51:56.935038Z
+successful: tempest.scenario.test_network_quotas.TestNetworkQuotaBasic.test_create_ports_until_quota_hit[network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0
+time: 2014-01-06 12:51:56.937134Z
+tags: worker-0
+test: tempest.scenario.test_network_quotas.TestNetworkQuotaBasic.test_create_subnet_until_quota_hit[network]
+time: 2014-01-06 12:52:12.820830Z
+successful: tempest.scenario.test_network_quotas.TestNetworkQuotaBasic.test_create_subnet_until_quota_hit[network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

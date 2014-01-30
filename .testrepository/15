@@ -1,0 +1,16 @@
+time: 2013-12-19 21:40:49.753853Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2013-12-19 21:46:57.978020Z
+successful: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

@@ -1,0 +1,80 @@
+time: 2014-01-09 10:06:53.137878Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-09 10:15:17.371945Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+547
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 182, in test_minimum_basic_scenario
+    self.check_partitions()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 152, in check_partitions
+    partitions = self.linux_client.get_partitions()
+  File "/home/os1/tempest/tempest/common/utils/linux/remote_client.py", line 77, in get_partitions
+    output = self.ssh_client.exec_command(command)
+  File "/home/os1/tempest/tempest/common/ssh.py", line 108, in exec_command
+    ssh = self._get_ssh_connection()
+  File "/home/os1/tempest/tempest/common/ssh.py", line 65, in _get_ssh_connection
+    timeout=self.timeout, pkey=self.pkey)
+  File "/usr/local/lib/python2.7/dist-packages/paramiko/client.py", line 305, in connect
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/local/lib/python2.7/dist-packages/paramiko/util.py", line 278, in retry_on_signal
+    return function()
+  File "/usr/local/lib/python2.7/dist-packages/paramiko/client.py", line 305, in <lambda>
+    retry_on_signal(lambda: sock.connect(addr))
+  File "/usr/lib/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+  File "/usr/local/lib/python2.7/dist-packages/fixtures/_fixtures/timeout.py", line 52, in signal_handler
+    raise TimeoutException()
+TimeoutException
+0
+]
+tags: -worker-0
+time: 2014-01-09 10:15:49.812722Z
+tags: worker-0
+test: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario)
+time: 2014-01-09 10:15:49.812722Z
+failure: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+436
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 248, in tearDownClass
+    thing.delete()
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 35, in delete
+    self.manager.delete(self)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 228, in delete
+    self._delete("/volumes/%s" % base.getid(volume))
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/base.py", line 162, in _delete
+    resp, body = self.api.client.delete(url)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 216, in delete
+    return self._cs_request(url, 'DELETE', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 174, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 157, in request
+    raise exceptions.from_response(resp, body)
+BadRequest: Invalid volume: Volume status must be available or error (HTTP 400) (Request-ID: req-7ad8d9b2-5fb6-4959-8606-cc84ce056a28)
+0
+]
+tags: -worker-0
+time: 2014-01-09 10:15:49.932299Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-09 10:15:49.932299Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

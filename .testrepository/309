@@ -1,0 +1,74 @@
+time: 2014-01-20 08:52:27.319037Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-20 09:00:47.847091Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+3FB
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 181, in test_minimum_basic_scenario
+    self.ssh_to_server()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 149, in ssh_to_server
+    self.linux_client = self.get_remote_client(self.floating_ip.floating_ip_address)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 475, in get_remote_client
+    return RemoteClient(ip, username, pkey=private_key)
+  File "/home/os1/tempest/tempest/common/utils/linux/remote_client.py", line 47, in __init__
+    if not self.ssh_client.test_connection_auth():
+  File "/home/os1/tempest/tempest/common/ssh.py", line 149, in test_connection_auth
+    connection = self._get_ssh_connection()
+  File "/home/os1/tempest/tempest/common/ssh.py", line 71, in _get_ssh_connection
+    time.sleep(bsleep)
+  File "/usr/local/lib/python2.7/dist-packages/fixtures/_fixtures/timeout.py", line 52, in signal_handler
+    raise TimeoutException()
+TimeoutException
+0
+]
+tags: -worker-0
+time: 2014-01-20 09:01:08.373069Z
+tags: worker-0
+test: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario)
+time: 2014-01-20 09:01:08.373069Z
+failure: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+455
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 248, in tearDownClass
+    thing.delete()
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 35, in delete
+    self.manager.delete(self)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 228, in delete
+    self._delete("/volumes/%s" % base.getid(volume))
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/base.py", line 162, in _delete
+    resp, body = self.api.client.delete(url)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 216, in delete
+    return self._cs_request(url, 'DELETE', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 174, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 157, in request
+    raise exceptions.from_response(resp, body)
+BadRequest: Invalid volume: Volume status must be available or error, but current status is: in-use (HTTP 400) (Request-ID: req-80f8da82-02a3-43dd-8a21-e0fe6c8d5f7a)
+0
+]
+tags: -worker-0
+time: 2014-01-20 09:01:08.427947Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-20 09:01:08.427947Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

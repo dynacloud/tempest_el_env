@@ -1,0 +1,65 @@
+time: 2014-01-16 10:25:57.047318Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-16 10:27:18.995182Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+90B
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 168, in test_minimum_basic_scenario
+    self.nova_boot()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 102, in nova_boot
+    create_kwargs=create_kwargs)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 412, in create_server
+    self.status_timeout(client.servers, server.id, 'ACTIVE')
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 304, in status_timeout
+    not_found_exception=not_found_exception)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 358, in _status_timeout
+    self.config.compute.build_interval):
+  File "/home/os1/tempest/tempest/test.py", line 290, in call_until_true
+    if func():
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 338, in check_status
+    thing = things.get(thing_id)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/v1_1/servers.py", line 370, in get
+    return self._get("/servers/%s" % base.getid(server), "server")
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/base.py", line 140, in _get
+    _resp, body = self.api.client.get(url)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 229, in get
+    return self._cs_request(url, 'GET', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 213, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 195, in _time_request
+    resp, body = self.request(url, method, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 166, in request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 361, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 464, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 356, in send
+    raise ConnectionError(e)
+ConnectionError: HTTPConnectionPool(host='192.168.103.187', port=8774): Max retries exceeded with url: /v2/f34e29d3dbbd460c80cd52b3d0da4d3e/servers/3afc047e-3962-4595-9308-d7b037f770f4 (Caused by <class 'socket.error'>: [Errno 104] Connection reset by peer)
+0
+]
+tags: -worker-0
+time: 2014-01-16 10:27:32.129029Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-16 10:27:32.129029Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

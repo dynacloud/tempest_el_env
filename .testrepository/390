@@ -1,0 +1,16 @@
+time: 2014-01-26 21:38:34.914950Z
+tags: worker-0
+test: tempest.scenario.test_dashboard_basic_ops.TestDashboardBasicOps.test_basic_scenario[dashboard]
+time: 2014-01-26 21:38:40.506430Z
+successful: tempest.scenario.test_dashboard_basic_ops.TestDashboardBasicOps.test_basic_scenario[dashboard] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

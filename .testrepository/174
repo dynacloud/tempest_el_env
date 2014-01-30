@@ -1,0 +1,163 @@
+time: 2014-01-08 09:19:29.224789Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-08 09:22:28.421356Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+39
+2014-01-08 10:22:27,501 Request returned failure status.
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+77C
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 176, in test_minimum_basic_scenario
+    self.nova_reboot()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 135, in nova_reboot
+    self._wait_for_server_status('ACTIVE')
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 61, in _wait_for_server_status
+    self.compute_client.servers, server_id, status)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 304, in status_timeout
+    not_found_exception=not_found_exception)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 358, in _status_timeout
+    self.config.compute.build_interval):
+  File "/home/os1/tempest/tempest/test.py", line 290, in call_until_true
+    if func():
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 338, in check_status
+    thing = things.get(thing_id)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/v1_1/servers.py", line 370, in get
+    return self._get("/servers/%s" % base.getid(server), "server")
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/base.py", line 140, in _get
+    _resp, body = self.api.client.get(url)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 229, in get
+    return self._cs_request(url, 'GET', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 213, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 195, in _time_request
+    resp, body = self.request(url, method, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 189, in request
+    raise exceptions.from_response(resp, body, url, method)
+ClientException: The server has either erred or is incapable of performing the requested operation. (HTTP 500) (Request-ID: req-98f3c245-3f1a-4f9d-9c19-0951772024fc)
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback-1
+1387
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/glanceclient/v1/images.py", line 226, in delete
+    self._delete("/v1/images/%s" % base.getid(image))
+  File "/usr/local/lib/python2.7/dist-packages/glanceclient/common/base.py", line 62, in _delete
+    self.api.raw_request('DELETE', url)
+  File "/usr/local/lib/python2.7/dist-packages/glanceclient/common/http.py", line 289, in raw_request
+    return self._http_request(url, method, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/glanceclient/common/http.py", line 249, in _http_request
+    raise exc.from_response(resp, body_str)
+HTTPInternalServerError: Traceback (most recent call last):
+  File "/usr/lib/python2.7/dist-packages/eventlet/wsgi.py", line 383, in handle_one_response
+    result = self.application(self.environ, start_response)
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 130, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 195, in call_func
+  File "/usr/lib/python2.7/dist-packages/glance/common/wsgi.py", line 362, in __call__
+    response = req.get_response(self.application)
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1296, in send
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1260, in call_application
+  File "/usr/lib/python2.7/dist-packages/keystoneclient/middleware/auth_token.py", line 450, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 130, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 195, in call_func
+  File "/usr/lib/python2.7/dist-packages/glance/common/wsgi.py", line 362, in __call__
+    response = req.get_response(self.application)
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1296, in send
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1260, in call_application
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 130, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 195, in call_func
+  File "/usr/lib/python2.7/dist-packages/glance/common/wsgi.py", line 362, in __call__
+    response = req.get_response(self.application)
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1296, in send
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1260, in call_application
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 130, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 195, in call_func
+  File "/usr/lib/python2.7/dist-packages/glance/common/wsgi.py", line 362, in __call__
+    response = req.get_response(self.application)
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1296, in send
+  File "/usr/lib/python2.7/dist-packages/webob/request.py", line 1260, in call_application
+  File "/usr/lib/python2.7/dist-packages/paste/urlmap.py", line 203, in __call__
+    return app(environ, start_response)
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 144, in __call__
+  File "/usr/lib/python2.7/dist-packages/routes/middleware.py", line 131, in __call__
+    response = self.app(environ, start_response)
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 144, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 130, in __call__
+  File "/usr/lib/python2.7/dist-packages/webob/dec.py", line 195, in call_func
+  File "/usr/lib/python2.7/dist-packages/glance/common/wsgi.py", line 572, in __call__
+    request, **action_args)
+  File "/usr/lib/python2.7/dist-packages/glance/common/wsgi.py", line 589, in dispatch
+    return method(*args, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/glance/common/utils.py", line 413, in wrapped
+    return func(self, req, *args, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/glance/api/v1/images.py", line 830, in delete
+    image = self.get_image_meta_or_404(req, id)
+  File "/usr/lib/python2.7/dist-packages/glance/api/v1/controller.py", line 41, in get_image_meta_or_404
+    return registry.get_image_metadata(context, image_id)
+  File "/usr/lib/python2.7/dist-packages/glance/registry/__init__.py", line 160, in get_image_metadata
+    return c.get_image(image_id)
+  File "/usr/lib/python2.7/dist-packages/glance/registry/client.py", line 123, in get_image
+    res = self.do_request("GET", "/images/%s" % image_id)
+  File "/usr/lib/python2.7/dist-packages/glance/registry/client.py", line 90, in do_request
+    **kwargs)
+  File "/usr/lib/python2.7/dist-packages/glance/common/client.py", line 63, in wrapped
+    return func(self, *args, **kwargs)
+  File "/usr/lib/python2.7/dist-packages/glance/common/client.py", line 377, in do_request
+    headers=headers)
+  File "/usr/lib/python2.7/dist-packages/glance/common/client.py", line 80, in wrapped
+    return func(self, method, url, body, headers)
+  File "/usr/lib/python2.7/dist-packages/glance/common/client.py", line 533, in _do_request
+    raise exception.ServerError()
+ServerError: The request returned 500 Internal Server Error.
+ (HTTP 500)
+0
+]
+tags: -worker-0
+time: 2014-01-08 09:22:28.925656Z
+tags: worker-0
+test: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario)
+time: 2014-01-08 09:22:28.925656Z
+failure: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+455
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 248, in tearDownClass
+    thing.delete()
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 35, in delete
+    self.manager.delete(self)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 228, in delete
+    self._delete("/volumes/%s" % base.getid(volume))
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/base.py", line 162, in _delete
+    resp, body = self.api.client.delete(url)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 216, in delete
+    return self._cs_request(url, 'DELETE', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 174, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 157, in request
+    raise exceptions.from_response(resp, body)
+ClientException: The server has either erred or is incapable of performing the requested operation. (HTTP 500) (Request-ID: req-90d045f3-bade-4871-99cc-7fd063c56155)
+0
+]
+tags: -worker-0
+time: 2014-01-08 09:22:32.860166Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-08 09:22:32.860166Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

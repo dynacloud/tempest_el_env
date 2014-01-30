@@ -1,0 +1,407 @@
+time: 2014-01-25 21:47:10.767644Z
+tags: worker-0
+test: tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern[compute,image,network]
+time: 2014-01-25 21:50:01.784168Z
+successful: tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern[compute,image,network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+E24B
+2014-01-25 22:47:10,870 
+REQ: curl -i http://192.168.103.187:5000/v2.0/tokens -X POST -H "Content-Type: application/json" -H "Accept: application/json" -H "User-Agent: python-novaclient" -d '{"auth": {"tenantName": "tempest.scenario.manager-tempest-493579932-tenant", "passwordCredentials": {"username": "tempest.scenario.manager-tempest-493579932-user", "password": "pass"}}}'
+
+2014-01-25 22:47:10,871 Starting new HTTP connection (1): 192.168.103.187
+2014-01-25 22:47:10,965 "POST /v2.0/tokens HTTP/1.1" 200 3104
+2014-01-25 22:47:10,966 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:47 GMT', 'vary': 'X-Auth-Token', 'content-length': '3104', 'content-type': 'application/json'})
+RESP BODY: {"access": {"token": {"issued_at": "2014-01-25T21:46:47.353710", "expires": "2014-01-26T21:46:47Z", "id": "c9281898fea24ad99a4dd458c280ae10", "tenant": {"description": "tempest.scenario.manager-tempest-493579932-tenant-desc", "enabled": true, "id": "6054eac01ee04665b29ff5aa9aebaca3", "name": "tempest.scenario.manager-tempest-493579932-tenant"}}, "serviceCatalog": [{"endpoints": [{"adminURL": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3", "region": "RegionOne", "internalURL": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3", "id": "2f1645b8c2d64609a71f1ee4e1bc7445", "publicURL": "http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3"}], "endpoints_links": [], "type": "compute", "name": "nova"}, {"endpoints": [{"adminURL": "http://10.10.10.20:9696", "region": "RegionOne", "internalURL": "http://10.10.10.20:9696", "id": "23b3d318521b4808abd94228f9b3585b", "publicURL": "http://192.168.103.187:9696"}], "endpoints_links": [], "type": "network", "name": "neutron"}, {"endpoints": [{"adminURL": "http://10.10.10.20:8089/v1", "region": "RegionOne", "internalURL": "http://10.10.10.20:8088/v1", "id": "4b907b2ecd324835ba2cf35c68a53f91", "publicURL": "http://192.168.103.187:8088/v1"}], "endpoints_links": [], "type": "billing", "name": "ckmed"}, {"endpoints": [{"adminURL": "http://10.10.10.20:9292", "region": "RegionOne", "internalURL": "http://10.10.10.20:9292", "id": "1c44ffab7b354e8c86479511289f7396", "publicURL": "http://192.168.103.187:9292"}], "endpoints_links": [], "type": "image", "name": "glance"}, {"endpoints": [{"adminURL": "http://10.10.10.20:8777", "region": "RegionOne", "internalURL": "http://10.10.10.20:8777", "id": "629d61cd25e2465d80b04f5f55a336cc", "publicURL": "http://192.168.103.187:8777"}], "endpoints_links": [], "type": "metering", "name": "ceilometer"}, {"endpoints": [{"adminURL": "http://10.10.10.20:8776/v1/6054eac01ee04665b29ff5aa9aebaca3", "region": "RegionOne", "internalURL": "http://10.10.10.20:8776/v1/6054eac01ee04665b29ff5aa9aebaca3", "id": "525b50e95b1142728f663979b9d1a3f7", "publicURL": "http://192.168.103.187:8776/v1/6054eac01ee04665b29ff5aa9aebaca3"}], "endpoints_links": [], "type": "volume", "name": "cinder"}, {"endpoints": [{"adminURL": "http://10.10.10.20:8773/services/Admin", "region": "RegionOne", "internalURL": "http://10.10.10.20:8773/services/Cloud", "id": "91d38646ad2540dabbd4231582be962e", "publicURL": "http://192.168.103.187:8773/services/Cloud"}], "endpoints_links": [], "type": "ec2", "name": "ec2"}, {"endpoints": [{"adminURL": "http://10.10.10.20:35357/v2.0", "region": "RegionOne", "internalURL": "http://10.10.10.20:5000/v2.0", "id": "64684a00c0ce4af494fa1ea1052f3d52", "publicURL": "http://192.168.103.187:5000/v2.0"}], "endpoints_links": [], "type": "identity", "name": "keystone"}], "user": {"username": "tempest.scenario.manager-tempest-493579932-user", "roles_links": [], "id": "024c12c3c5344b10b61c03549f88a35e", "roles": [{"name": "_member_"}], "name": "tempest.scenario.manager-tempest-493579932-user"}, "metadata": {"is_admin": 0, "roles": ["9fe2ff9ee4384b1894a90878d3e92bab"]}}}
+
+2014-01-25 22:47:10,967 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/os-keypairs -X POST -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10" -d '{"keypair": {"name": "scenario-keypair--tempest-918265275"}}'
+
+2014-01-25 22:47:10,968 Starting new HTTP connection (1): 192.168.103.187
+2014-01-25 22:47:11,127 "POST /v2/6054eac01ee04665b29ff5aa9aebaca3/os-keypairs HTTP/1.1" 200 2312
+2014-01-25 22:47:11,127 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:47 GMT', 'content-length': '2312', 'content-type': 'application/json', 'x-compute-request-id': 'req-d76afbbe-0b8c-4d56-a240-5bc9c0449d54'})
+RESP BODY: {"keypair": {"public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCqRMclJUYND4Tuz5viyU02cxoE6/cL1rEhFbHWLfvO7n9jxfI/0dA1yd56LQu3YJTBOkdoXEG9T/XrX2EenwxP6Epp1u5TEmthZVp7yDwK9kD2ENzYdSaXRG/ejobHGaOdBKo7P4NloMnSIA3dKwTt5H6rIH9PxORLgrEphG0rqcWPPqRhgLgDUluS1l3hus463kolgs+XRMZBCDCWb/00XhJYbQsrV7BNPqKGP/Ht9rIUgQQBo/0TVeYCXHVgwpRFK5deYfjn7f/U/bmMOOw6Kwwj9Ipb0hDoXyMBs5dMbqGZCBMicMDl4nvLinFnLXuMO7hQXKNtV+EV/SEDqxdr Generated by Nova\n", "private_key": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAqkTHJSVGDQ+E7s+b4slNNnMaBOv3C9axIRWx1i37zu5/Y8Xy\nP9HQNcneei0Lt2CUwTpHaFxBvU/1619hHp8MT+hKadbuUxJrYWVae8g8CvZA9hDc\n2HUml0Rv3o6GxxmjnQSqOz+DZaDJ0iAN3SsE7eR+qyB/T8TkS4KxKYRtK6nFjz6k\nYYC4A1JbktZd4brOOt5KJYLPl0TGQQgwlm/9NF4SWG0LK1ewTT6ihj/x7fayFIEE\nAaP9E1XmAlx1YMKURSuXXmH45+3/1P25jDjsOisMI/SKW9IQ6F8jAbOXTG6hmQgT\nInDA5eJ7y4pxZy17jDu4UFyjbVfhFf0hA6sXawIDAQABAoIBAGiwRx2gsFSBcUOA\nJKGpEa9jz+Cs0MXXqCrmcuR0e3m9DFhlMdBpibI4v3CxV53VZUD1O0iASO9ERbkF\neOph8ikDcxVmUDyFe75zmdG3yKsYw9JHhfIU/bhOHNZjHZ03N3DomF47a+fFl7F5\ngey1cZ9vOS6wmXaLYa7H2XPkd1c7Vuo2OEZM68chiI9MujpdthkgtDfMq9jjVu6u\nv9FGsRTn2tcJzLJcEyco1pgoYpdRKsFGoD+5MquLI9DcEXdtXj7Z61qkzL3/Oz2f\nBBLggKxn9j/jJbMjkS0ZUmyJi2HjG+n2uS8USy9yp74MvB5czQ8KJVi6tH1Mr10p\nX1gLjxECgYEA31LZnfTyj+y3nNkzvQwjFyDRMOMzPhDrOxpPd6MdSHZ2jq6I64Jx\nBSa3CoOx5NsZObZ/oms0ewsrywc/c960vsiUcqyyLzbNFYl1bFk7lHmEaBHlFYBi\nX+moUuqgxqOwgv1KOSEGbc4+nG3i5eMcui6t7ue0MBEy6ZJD7w2zgjkCgYEAwy6e\nwmdqE5r9RYVY2IgirlXfpwUZVXpIsjdzkLdB164pYqWjBLCNO2juy7zAxRNMdYzJ\nnCYSLX+i9yFPJJFg/gmUD424dRt/3Ij6edMIzoTRv8pP0QObBJD9+9ubtpIFS4zQ\nY52snJMQToqZlgebm2TJ7fWSCQvfDXjUVsSuFsMCgYB9p7VQfkF5H91UQJYu+cRI\nwCtUUZJEiuqAb9Zk33+bhSRCNgxOTy/ekSEOpnkS5wCzi28XaTC3RtrWOvbF8HpM\nmrmEKI19qV0NkDFkzHSMny8UC3WVeo5fny4ZsXDTM8keevwnVuCyKgjqpZ20cex5\nCcjOEss8/IBkEettd40YaQKBgEZQs00h6GsruPaktX88fBIGSc5n3dqXdT0PEQkf\nnA7RZYNuXK5B1H+ErBKl62SUMUVf9PnWFVJi2xjg3Rw1a5XZaYe47KzzvTp79pCQ\n4GlWHCJWBi8sd1pLydREJ3K8ZD/1eNWKZjb6HDPPZslP8FUpGD4r6/JqXm8CCq0/\nqd/1AoGBAIsHVDLyYY2FWtdV+mBcCBPm2/BvSrpgiqFN49WpdplKmDVt0wUj8BNP\neaLd9XrEYrV5AlYGpxfzBlrNano6xJElHFWNvj/MsjJvTYMv8rAB1fhlBeeledey\nzu/NUtd0nuj3qxqBR3BwdEjJD7N9+3hKD4CHYNok6GDwHkFfnEw5\n-----END RSA PRIVATE KEY-----\n", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-keypair--tempest-918265275", "fingerprint": "54:90:14:12:c9:bf:58:be:b8:d9:fe:7d:59:4a:88:a4"}}
+
+2014-01-25 22:47:11,128 Adding <Keypair: scenario-keypair--tempest-918265275> to shared resources of TestSnapshotPattern
+2014-01-25 22:47:11,129 paths: ami: /home/os1/cloud-images/cirros-0.3.0-x86_64-disk.img
+2014-01-25 22:47:11,129 curl -i -X POST -H 'x-image-meta-container_format: ovf' -H 'User-Agent: python-glanceclient' -H 'x-image-meta-is_public: True' -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'x-image-meta-disk_format: qcow2' -H 'x-image-meta-name: scenario-qcow2--tempest-46340655' http://192.168.103.187:9292/v1/images
+2014-01-25 22:47:11,265 
+HTTP/1.1 201 Created
+date: Sat, 25 Jan 2014 21:46:47 GMT
+content-length: 444
+content-type: application/json
+location: http://192.168.103.187:9292/v1/images/ce611698-052b-4fae-abb3-66b814dd59a5
+x-openstack-request-id: req-ddfd7aec-2f5c-492a-b690-ee4ed101bb37
+
+{"image": {"status": "queued", "deleted": false, "container_format": "ovf", "min_ram": 0, "updated_at": "2014-01-25T21:46:47", "owner": "6054eac01ee04665b29ff5aa9aebaca3", "min_disk": 0, "is_public": true, "deleted_at": null, "id": "ce611698-052b-4fae-abb3-66b814dd59a5", "size": 0, "name": "scenario-qcow2--tempest-46340655", "checksum": null, "created_at": "2014-01-25T21:46:47", "disk_format": "qcow2", "properties": {}, "protected": false}}
+
+2014-01-25 22:47:11,266 curl -i -X PUT -H 'Transfer-Encoding: chunked' -H 'x-image-meta-size: 9761280' -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'User-Agent: python-glanceclient' -d '<open file '/home/os1/cloud-images/cirros-0.3.0-x86_64-disk.img', mode 'rb' at 0x4213ae0>' http://192.168.103.187:9292/v1/images/ce611698-052b-4fae-abb3-66b814dd59a5
+2014-01-25 22:47:12,174 
+HTTP/1.1 200 OK
+content-length: 480
+etag: 50bdc35edb03a38d91b1b071afb20a3c
+location: http://192.168.103.187:9292/v1/images/ce611698-052b-4fae-abb3-66b814dd59a5
+date: Sat, 25 Jan 2014 21:46:48 GMT
+content-type: application/json
+x-openstack-request-id: req-46e2a8da-e5da-4e14-9aac-0d2ccdfd47f8
+
+{"image": {"status": "active", "deleted": false, "container_format": "ovf", "min_ram": 0, "updated_at": "2014-01-25T21:46:48", "owner": "6054eac01ee04665b29ff5aa9aebaca3", "min_disk": 0, "is_public": true, "deleted_at": null, "id": "ce611698-052b-4fae-abb3-66b814dd59a5", "size": 9761280, "name": "scenario-qcow2--tempest-46340655", "checksum": "50bdc35edb03a38d91b1b071afb20a3c", "created_at": "2014-01-25T21:46:47", "disk_format": "qcow2", "properties": {}, "protected": false}}
+
+2014-01-25 22:47:12,175 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/os-security-groups -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:47:12,266 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/os-security-groups HTTP/1.1" 200 692
+2014-01-25 22:47:12,267 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:48 GMT', 'content-length': '692', 'content-type': 'application/json', 'x-compute-request-id': 'req-e282ad94-1981-4840-a6ae-e03b31321422'})
+RESP BODY: {"security_groups": [{"rules": [{"from_port": null, "group": {"tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "name": "default"}, "ip_protocol": null, "to_port": null, "parent_group_id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "ip_range": {}, "id": "19aee0ce-59ff-4db8-952c-60e2377f9c14"}, {"from_port": null, "group": {"tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "name": "default"}, "ip_protocol": null, "to_port": null, "parent_group_id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "ip_range": {}, "id": "37e48474-57a5-4fa3-ade9-d2455a8f082a"}], "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "name": "default", "description": "default"}]}
+
+2014-01-25 22:47:12,268 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/os-security-group-rules -X POST -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10" -d '{"security_group_rule": {"from_port": 22, "ip_protocol": "tcp", "to_port": 22, "parent_group_id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "cidr": "0.0.0.0/0", "group_id": null}}'
+
+2014-01-25 22:47:12,375 "POST /v2/6054eac01ee04665b29ff5aa9aebaca3/os-security-group-rules HTTP/1.1" 200 232
+2014-01-25 22:47:12,376 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:48 GMT', 'content-length': '232', 'content-type': 'application/json', 'x-compute-request-id': 'req-5258fae6-c180-4226-ba0c-3851a2425048'})
+RESP BODY: {"security_group_rule": {"from_port": 22, "group": {}, "ip_protocol": "tcp", "to_port": 22, "parent_group_id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "ip_range": {"cidr": "0.0.0.0/0"}, "id": "6754c012-9766-48ab-9d4d-d233deb3777c"}}
+
+2014-01-25 22:47:12,376 Adding <SecurityGroupRule from_port=22, group={}, id=6754c012-9766-48ab-9d4d-d233deb3777c, ip_protocol=tcp, ip_range={u'cidr': u'0.0.0.0/0'}, parent_group_id=770aa6bf-68e9-4d26-aa38-48176fad4107, to_port=22> to shared resources of TestSnapshotPattern
+2014-01-25 22:47:12,377 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/os-security-group-rules -X POST -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10" -d '{"security_group_rule": {"from_port": -1, "ip_protocol": "icmp", "to_port": -1, "parent_group_id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "cidr": "0.0.0.0/0", "group_id": null}}'
+
+2014-01-25 22:47:12,461 "POST /v2/6054eac01ee04665b29ff5aa9aebaca3/os-security-group-rules HTTP/1.1" 200 233
+2014-01-25 22:47:12,462 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:48 GMT', 'content-length': '233', 'content-type': 'application/json', 'x-compute-request-id': 'req-1f289f1b-a9a2-435e-a492-f5992098a255'})
+RESP BODY: {"security_group_rule": {"from_port": -1, "group": {}, "ip_protocol": "icmp", "to_port": -1, "parent_group_id": "770aa6bf-68e9-4d26-aa38-48176fad4107", "ip_range": {"cidr": "0.0.0.0/0"}, "id": "af4ac168-56f1-41e9-b583-d66f2e91835a"}}
+
+2014-01-25 22:47:12,463 Adding <SecurityGroupRule from_port=-1, group={}, id=af4ac168-56f1-41e9-b583-d66f2e91835a, ip_protocol=icmp, ip_range={u'cidr': u'0.0.0.0/0'}, parent_group_id=770aa6bf-68e9-4d26-aa38-48176fad4107, to_port=-1> to shared resources of TestSnapshotPattern
+2014-01-25 22:47:12,463 Creating a server (name: scenario-server--tempest-794888915, image: ce611698-052b-4fae-abb3-66b814dd59a5, flavor: 1)
+2014-01-25 22:47:12,463 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers -X POST -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10" -d '{"server": {"name": "scenario-server--tempest-794888915", "imageRef": "ce611698-052b-4fae-abb3-66b814dd59a5", "key_name": "scenario-keypair--tempest-918265275", "flavorRef": "1", "max_count": 1, "min_count": 1}}'
+
+2014-01-25 22:47:12,910 "POST /v2/6054eac01ee04665b29ff5aa9aebaca3/servers HTTP/1.1" 202 438
+2014-01-25 22:47:12,911 RESP: [202] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:49 GMT', 'content-length': '438', 'content-type': 'application/json', 'location': 'http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b', 'x-compute-request-id': 'req-c5b812c3-7648-4aaa-b816-d181ceb1301d'})
+RESP BODY: {"server": {"security_groups": [{"name": "default"}], "OS-DCF:diskConfig": "MANUAL", "id": "ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "bookmark"}], "adminPass": "FxZb5ZyuMMs7"}}
+
+2014-01-25 22:47:12,912 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:47:13,039 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b HTTP/1.1" 200 1353
+2014-01-25 22:47:13,039 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:49 GMT', 'content-length': '1353', 'content-type': 'application/json', 'x-compute-request-id': 'req-c0c8a2ae-ac47-49fc-85b9-a70e3fefdb94'})
+RESP BODY: {"server": {"status": "BUILD", "updated": "2014-01-25T21:46:49Z", "hostId": "", "addresses": {}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "ce611698-052b-4fae-abb3-66b814dd59a5", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/ce611698-052b-4fae-abb3-66b814dd59a5", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": "scheduling", "OS-EXT-STS:vm_state": "building", "OS-SRV-USG:launched_at": null, "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-794888915", "created": "2014-01-25T21:46:49Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 0, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:47:13,040 Adding <Server: scenario-server--tempest-794888915> to shared resources of TestSnapshotPattern
+2014-01-25 22:47:13,040 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:47:13,170 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b HTTP/1.1" 200 1353
+2014-01-25 22:47:13,171 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:46:49 GMT', 'content-length': '1353', 'content-type': 'application/json', 'x-compute-request-id': 'req-27729206-b4b6-4365-a4c6-aeed477fd193'})
+RESP BODY: {"server": {"status": "BUILD", "updated": "2014-01-25T21:46:49Z", "hostId": "", "addresses": {}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "ce611698-052b-4fae-abb3-66b814dd59a5", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/ce611698-052b-4fae-abb3-66b814dd59a5", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": "scheduling", "OS-EXT-STS:vm_state": "building", "OS-SRV-USG:launched_at": null, "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-794888915", "created": "2014-01-25T21:46:49Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 0, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:47:13,172 Waiting for <Server: scenario-server--tempest-794888915> to get to ACTIVE status. Currently in BUILD status
+2014-01-25 22:47:13,172 Sleeping for 50 seconds
+2014-01-25 22:48:03,223 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:48:03,224 Resetting dropped connection: 192.168.103.187
+2014-01-25 22:48:07,505 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b HTTP/1.1" 200 1633
+2014-01-25 22:48:07,506 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:47:43 GMT', 'content-length': '1633', 'content-type': 'application/json', 'x-compute-request-id': 'req-e1894d9a-2727-4a3a-b501-4522517fa9ee'})
+RESP BODY: {"server": {"status": "ACTIVE", "updated": "2014-01-25T21:47:23Z", "hostId": "8a41d1ae589a2674fb4100458b3193229ebe82543ea1011930615b09", "addresses": {"tempest.scenario.manager-tempest-497650684-network": [{"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:43:09:5d", "version": 4, "addr": "10.11.0.2", "OS-EXT-IPS:type": "fixed"}]}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "ce611698-052b-4fae-abb3-66b814dd59a5", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/ce611698-052b-4fae-abb3-66b814dd59a5", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": null, "OS-EXT-STS:vm_state": "active", "OS-SRV-USG:launched_at": "2014-01-25T21:47:23.000000", "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "security_groups": [{"name": "default"}], "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-794888915", "created": "2014-01-25T21:46:49Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 1, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:48:07,507 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:48:07,656 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b HTTP/1.1" 200 1633
+2014-01-25 22:48:07,657 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:47:44 GMT', 'content-length': '1633', 'content-type': 'application/json', 'x-compute-request-id': 'req-83409bca-84db-469b-a1d2-a90626c7d118'})
+RESP BODY: {"server": {"status": "ACTIVE", "updated": "2014-01-25T21:47:23Z", "hostId": "8a41d1ae589a2674fb4100458b3193229ebe82543ea1011930615b09", "addresses": {"tempest.scenario.manager-tempest-497650684-network": [{"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:43:09:5d", "version": 4, "addr": "10.11.0.2", "OS-EXT-IPS:type": "fixed"}]}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "ce611698-052b-4fae-abb3-66b814dd59a5", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/ce611698-052b-4fae-abb3-66b814dd59a5", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": null, "OS-EXT-STS:vm_state": "active", "OS-SRV-USG:launched_at": "2014-01-25T21:47:23.000000", "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b", "security_groups": [{"name": "default"}], "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-794888915", "created": "2014-01-25T21:46:49Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 1, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:48:07,657 Adding <Server: scenario-server--tempest-794888915> to shared resources of TestSnapshotPattern
+2014-01-25 22:48:07,658 Created server: <Server: scenario-server--tempest-794888915>
+2014-01-25 22:48:07,658 
+REQ: curl -i http://192.168.103.187:9696/v2.0/ports.json?device_id=ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b -X GET -H "X-Auth-Token: e667ebab26cc4239aba4ae6bb545c8ed" -H "Content-Type: application/json" -H "Accept: application/json" -H "User-Agent: python-neutronclient"
+
+2014-01-25 22:48:07,691 RESP:{'date': 'Sat, 25 Jan 2014 21:47:44 GMT', 'status': '200', 'content-length': '651', 'content-type': 'application/json; charset=UTF-8', 'content-location': 'http://192.168.103.187:9696/v2.0/ports.json?device_id=ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b'} {"ports": [{"status": "ACTIVE", "binding:host_id": "n-cn1", "name": "", "allowed_address_pairs": [], "admin_state_up": true, "network_id": "f2ace3b6-330c-4d06-b476-113bcfe9bfe0", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "extra_dhcp_opts": [], "binding:vif_type": "ovs", "device_owner": "compute:nova", "binding:capabilities": {"port_filter": true}, "mac_address": "fa:16:3e:43:09:5d", "fixed_ips": [{"subnet_id": "23ddfb17-b62d-425e-a54c-1793952835d0", "ip_address": "10.11.0.2"}], "id": "cba5ac58-f9f0-421e-9b51-aa19eea1ee5d", "security_groups": ["770aa6bf-68e9-4d26-aa38-48176fad4107"], "device_id": "ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b"}]}
+
+2014-01-25 22:48:07,692 
+REQ: curl -i http://192.168.103.187:9696/v2.0/floatingips.json -X POST -H "X-Auth-Token: e667ebab26cc4239aba4ae6bb545c8ed" -H "Content-Type: application/json" -H "Accept: application/json" -H "User-Agent: python-neutronclient" -d '{"floatingip": {"floating_network_id": "bd6d82b4-98e0-4a41-91ba-1138a94bea61", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "port_id": "cba5ac58-f9f0-421e-9b51-aa19eea1ee5d"}}'
+
+2014-01-25 22:48:07,871 RESP:{'date': 'Sat, 25 Jan 2014 21:47:44 GMT', 'status': '201', 'content-length': '350', 'content-type': 'application/json; charset=UTF-8'} {"floatingip": {"router_id": "eb751ab6-c3c6-4ea0-9954-75c471efd038", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "floating_network_id": "bd6d82b4-98e0-4a41-91ba-1138a94bea61", "fixed_ip_address": "10.11.0.2", "floating_ip_address": "10.10.13.202", "port_id": "cba5ac58-f9f0-421e-9b51-aa19eea1ee5d", "id": "bb926503-a0a3-448d-8d33-b644837f7cfc"}}
+
+2014-01-25 22:48:07,872 Adding {u'router_id': u'eb751ab6-c3c6-4ea0-9954-75c471efd038', u'floating_network_id': u'bd6d82b4-98e0-4a41-91ba-1138a94bea61', u'fixed_ip_address': u'10.11.0.2', u'floating_ip_address': u'10.10.13.202', u'tenant_id': u'6054eac01ee04665b29ff5aa9aebaca3', u'port_id': u'cba5ac58-f9f0-421e-9b51-aa19eea1ee5d', u'id': u'bb926503-a0a3-448d-8d33-b644837f7cfc'} to shared resources of TestSnapshotPattern
+2014-01-25 22:48:12,109 starting thread (client mode): 0x4db01d0L
+2014-01-25 22:48:12,121 Connected (version 2.0, client dropbear_0.53.1)
+2014-01-25 22:48:12,125 kex algos:['diffie-hellman-group1-sha1', 'diffie-hellman-group14-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] server encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] client mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] server mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] client compress:['none'] server compress:['none'] client lang:[''] server lang:[''] kex follows?False
+2014-01-25 22:48:12,125 Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2014-01-25 22:48:12,125 using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2014-01-25 22:48:12,200 Switch to new keys ...
+2014-01-25 22:48:12,211 Adding ssh-rsa host key for 10.10.13.202: c05b6439b198127afdd9c13792d01db4
+2014-01-25 22:48:12,211 Trying SSH key 54901412c9bf58beb8d9fe7d594a88a4
+2014-01-25 22:48:12,214 userauth is OK
+2014-01-25 22:48:12,234 Authentication (publickey) successful!
+2014-01-25 22:48:12,334 EOF in transport thread
+2014-01-25 22:48:12,352 starting thread (client mode): 0x3cbb050L
+2014-01-25 22:48:12,357 Connected (version 2.0, client dropbear_0.53.1)
+2014-01-25 22:48:12,358 kex algos:['diffie-hellman-group1-sha1', 'diffie-hellman-group14-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] server encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] client mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] server mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] client compress:['none'] server compress:['none'] client lang:[''] server lang:[''] kex follows?False
+2014-01-25 22:48:12,358 Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2014-01-25 22:48:12,358 using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2014-01-25 22:48:12,456 Switch to new keys ...
+2014-01-25 22:48:12,459 Adding ssh-rsa host key for 10.10.13.202: c05b6439b198127afdd9c13792d01db4
+2014-01-25 22:48:12,459 Trying SSH key 54901412c9bf58beb8d9fe7d594a88a4
+2014-01-25 22:48:12,461 userauth is OK
+2014-01-25 22:48:12,477 Authentication (publickey) successful!
+2014-01-25 22:48:12,483 [chan 1] Max packet in: 34816 bytes
+2014-01-25 22:48:12,485 [chan 1] Max packet out: 32768 bytes
+2014-01-25 22:48:12,486 Secsh channel 1 opened.
+2014-01-25 22:48:12,491 [chan 1] Sesch channel 1 request ok
+2014-01-25 22:48:12,491 [chan 1] EOF sent (1)
+2014-01-25 22:48:12,697 [chan 1] EOF received (1)
+2014-01-25 22:48:12,698 Dropping user packet because connection is dead.
+2014-01-25 22:48:12,702 starting thread (client mode): 0x4dab650L
+2014-01-25 22:48:12,706 Connected (version 2.0, client dropbear_0.53.1)
+2014-01-25 22:48:12,708 kex algos:['diffie-hellman-group1-sha1', 'diffie-hellman-group14-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] server encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] client mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] server mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] client compress:['none'] server compress:['none'] client lang:[''] server lang:[''] kex follows?False
+2014-01-25 22:48:12,708 Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2014-01-25 22:48:12,708 using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2014-01-25 22:48:12,775 Switch to new keys ...
+2014-01-25 22:48:12,803 Adding ssh-rsa host key for 10.10.13.202: c05b6439b198127afdd9c13792d01db4
+2014-01-25 22:48:12,803 Trying SSH key 54901412c9bf58beb8d9fe7d594a88a4
+2014-01-25 22:48:12,805 userauth is OK
+2014-01-25 22:48:12,822 Authentication (publickey) successful!
+2014-01-25 22:48:12,828 [chan 1] Max packet in: 34816 bytes
+2014-01-25 22:48:12,829 [chan 1] Max packet out: 32768 bytes
+2014-01-25 22:48:12,829 Secsh channel 1 opened.
+2014-01-25 22:48:12,834 [chan 1] Sesch channel 1 request ok
+2014-01-25 22:48:12,835 [chan 1] EOF sent (1)
+2014-01-25 22:48:12,897 [chan 1] EOF received (1)
+2014-01-25 22:48:12,899 Creating a snapshot image for server: scenario-server--tempest-794888915
+2014-01-25 22:48:12,900 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b/action -X POST -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10" -d '{"createImage": {"name": "scenario-snapshot--tempest-702743249", "metadata": {}}}'
+
+2014-01-25 22:48:13,186 "POST /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b/action HTTP/1.1" 202 0
+2014-01-25 22:48:13,186 RESP: [202] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:47:49 GMT', 'content-length': '0', 'content-type': 'text/html; charset=UTF-8', 'location': 'http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661', 'x-compute-request-id': 'req-068e2e97-d709-4b33-98c9-199c763d9ca1'})
+RESP BODY: 
+
+2014-01-25 22:48:13,187 curl -i -X HEAD -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'User-Agent: python-glanceclient' http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+2014-01-25 22:48:13,230 
+HTTP/1.1 200 OK
+content-length: 0
+x-image-meta-property-user_id: 024c12c3c5344b10b61c03549f88a35e
+x-image-meta-property-instance_type_memory_mb: 512
+x-image-meta-status: queued
+x-image-meta-owner: 6054eac01ee04665b29ff5aa9aebaca3
+x-image-meta-name: scenario-snapshot--tempest-702743249
+x-image-meta-property-instance_type_ephemeral_gb: 0
+x-image-meta-container_format: ovf
+x-image-meta-property-image_type: snapshot
+x-image-meta-created_at: 2014-01-25T21:47:49
+x-image-meta-property-instance_type_root_gb: 1
+location: http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+x-image-meta-property-instance_type_vcpus: 1
+x-image-meta-updated_at: 2014-01-25T21:47:49
+x-image-meta-property-instance_type_rxtx_factor: 1
+x-image-meta-id: 0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+x-image-meta-property-instance_type_id: 5
+x-image-meta-property-instance_uuid: ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b
+x-image-meta-min_ram: 0
+x-image-meta-property-instance_type_name: m1.tiny
+date: Sat, 25 Jan 2014 21:47:49 GMT
+x-image-meta-property-instance_type_flavorid: 1
+x-openstack-request-id: req-15e49f3d-fec0-48c7-9e48-27b23d981409
+x-image-meta-deleted: False
+x-image-meta-property-instance_type_swap: 0
+x-image-meta-protected: False
+x-image-meta-min_disk: 1
+x-image-meta-size: 0
+x-image-meta-property-base_image_ref: ce611698-052b-4fae-abb3-66b814dd59a5
+x-image-meta-is_public: False
+content-type: text/html; charset=UTF-8
+x-image-meta-disk_format: qcow2
+
+2014-01-25 22:48:13,231 Waiting for <Image {u'status': u'queued', u'name': u'scenario-snapshot--tempest-702743249', u'deleted': False, u'container_format': u'ovf', u'created_at': u'2014-01-25T21:47:49', u'disk_format': u'qcow2', u'updated_at': u'2014-01-25T21:47:49', u'id': u'0b9e948f-3996-4424-b5fb-3a1b5a2f1661', u'min_disk': 1, u'protected': False, u'min_ram': 0, u'owner': u'6054eac01ee04665b29ff5aa9aebaca3', u'is_public': False, 'properties': {u'instance_uuid': u'ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b', u'instance_type_swap': u'0', u'instance_type_memory_mb': u'512', u'user_id': u'024c12c3c5344b10b61c03549f88a35e', u'image_type': u'snapshot', u'instance_type_name': u'm1.tiny', u'instance_type_id': u'5', u'instance_type_ephemeral_gb': u'0', u'instance_type_rxtx_factor': u'1', u'instance_type_root_gb': u'1', u'instance_type_flavorid': u'1', u'instance_type_vcpus': u'1', u'base_image_ref': u'ce611698-052b-4fae-abb3-66b814dd59a5'}, u'size': 0}> to get to active status. Currently in queued status
+2014-01-25 22:48:13,231 Sleeping for 50 seconds
+2014-01-25 22:49:03,282 curl -i -X HEAD -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'User-Agent: python-glanceclient' http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+2014-01-25 22:49:03,309 
+HTTP/1.1 200 OK
+content-length: 0
+x-image-meta-property-user_id: 024c12c3c5344b10b61c03549f88a35e
+x-image-meta-property-instance_type_memory_mb: 512
+x-image-meta-status: active
+x-image-meta-property-image_state: available
+x-image-meta-owner: 6054eac01ee04665b29ff5aa9aebaca3
+x-image-meta-name: scenario-snapshot--tempest-702743249
+x-image-meta-property-instance_type_ephemeral_gb: 0
+x-image-meta-container_format: ovf
+x-image-meta-property-image_type: snapshot
+x-image-meta-created_at: 2014-01-25T21:47:49
+x-image-meta-property-instance_type_root_gb: 1
+etag: d05576579da79376c37462ca42feeec2
+location: http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+x-image-meta-property-image_location: snapshot
+x-image-meta-property-instance_type_vcpus: 1
+x-image-meta-updated_at: 2014-01-25T21:47:53
+x-image-meta-property-instance_type_rxtx_factor: 1
+x-image-meta-id: 0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+x-image-meta-property-instance_type_id: 5
+x-image-meta-is_public: False
+x-image-meta-property-instance_uuid: ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b
+x-image-meta-min_ram: 0
+x-image-meta-property-instance_type_name: m1.tiny
+date: Sat, 25 Jan 2014 21:48:39 GMT
+x-image-meta-property-instance_type_flavorid: 1
+x-openstack-request-id: req-8d23da0f-c676-4464-ac70-19ee37b5a7de
+x-image-meta-deleted: False
+x-image-meta-checksum: d05576579da79376c37462ca42feeec2
+x-image-meta-property-owner_id: 6054eac01ee04665b29ff5aa9aebaca3
+x-image-meta-property-instance_type_swap: 0
+x-image-meta-protected: False
+x-image-meta-min_disk: 1
+x-image-meta-size: 14483456
+x-image-meta-property-base_image_ref: ce611698-052b-4fae-abb3-66b814dd59a5
+x-image-meta-property-os_type: None
+content-type: text/html; charset=UTF-8
+x-image-meta-disk_format: qcow2
+
+2014-01-25 22:49:03,310 curl -i -X HEAD -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'User-Agent: python-glanceclient' http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+2014-01-25 22:49:03,351 
+HTTP/1.1 200 OK
+content-length: 0
+x-image-meta-property-user_id: 024c12c3c5344b10b61c03549f88a35e
+x-image-meta-property-instance_type_memory_mb: 512
+x-image-meta-status: active
+x-image-meta-property-image_state: available
+x-image-meta-owner: 6054eac01ee04665b29ff5aa9aebaca3
+x-image-meta-name: scenario-snapshot--tempest-702743249
+x-image-meta-property-instance_type_ephemeral_gb: 0
+x-image-meta-container_format: ovf
+x-image-meta-property-image_type: snapshot
+x-image-meta-created_at: 2014-01-25T21:47:49
+x-image-meta-property-instance_type_root_gb: 1
+etag: d05576579da79376c37462ca42feeec2
+location: http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+x-image-meta-property-image_location: snapshot
+x-image-meta-property-instance_type_vcpus: 1
+x-image-meta-updated_at: 2014-01-25T21:47:53
+x-image-meta-property-instance_type_rxtx_factor: 1
+x-image-meta-id: 0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+x-image-meta-property-instance_type_id: 5
+x-image-meta-is_public: False
+x-image-meta-property-instance_uuid: ad4442d6-4dd0-4f4b-94e1-ddb5b8aec68b
+x-image-meta-min_ram: 0
+x-image-meta-property-instance_type_name: m1.tiny
+date: Sat, 25 Jan 2014 21:48:39 GMT
+x-image-meta-property-instance_type_flavorid: 1
+x-openstack-request-id: req-7a99aba1-0a41-483d-a616-ca7609f5d77f
+x-image-meta-deleted: False
+x-image-meta-checksum: d05576579da79376c37462ca42feeec2
+x-image-meta-property-owner_id: 6054eac01ee04665b29ff5aa9aebaca3
+x-image-meta-property-instance_type_swap: 0
+x-image-meta-protected: False
+x-image-meta-min_disk: 1
+x-image-meta-size: 14483456
+x-image-meta-property-base_image_ref: ce611698-052b-4fae-abb3-66b814dd59a5
+x-image-meta-property-os_type: None
+content-type: text/html; charset=UTF-8
+x-image-meta-disk_format: qcow2
+
+2014-01-25 22:49:03,351 Created snapshot image scenario-snapshot--tempest-702743249 for server scenario-server--tempest-794888915
+2014-01-25 22:49:03,352 Creating a server (name: scenario-server--tempest-97955770, image: 0b9e948f-3996-4424-b5fb-3a1b5a2f1661, flavor: 1)
+2014-01-25 22:49:03,352 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers -X POST -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Content-Type: application/json" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10" -d '{"server": {"name": "scenario-server--tempest-97955770", "imageRef": "0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "key_name": "scenario-keypair--tempest-918265275", "flavorRef": "1", "max_count": 1, "min_count": 1}}'
+
+2014-01-25 22:49:03,353 Resetting dropped connection: 192.168.103.187
+2014-01-25 22:49:03,926 "POST /v2/6054eac01ee04665b29ff5aa9aebaca3/servers HTTP/1.1" 202 438
+2014-01-25 22:49:03,927 RESP: [202] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:48:40 GMT', 'content-length': '438', 'content-type': 'application/json', 'location': 'http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9', 'x-compute-request-id': 'req-8c6c3155-3be8-4497-b265-963e7dafa67b'})
+RESP BODY: {"server": {"security_groups": [{"name": "default"}], "OS-DCF:diskConfig": "MANUAL", "id": "4608710a-e126-4a32-afd1-9f3ab66b5aa9", "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "bookmark"}], "adminPass": "p6wSf5gVcZAi"}}
+
+2014-01-25 22:49:03,929 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:49:04,080 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 HTTP/1.1" 200 1352
+2014-01-25 22:49:04,081 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:48:40 GMT', 'content-length': '1352', 'content-type': 'application/json', 'x-compute-request-id': 'req-d4044a09-75e2-4a93-9322-5ba4cd595a2d'})
+RESP BODY: {"server": {"status": "BUILD", "updated": "2014-01-25T21:48:40Z", "hostId": "", "addresses": {}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": "scheduling", "OS-EXT-STS:vm_state": "building", "OS-SRV-USG:launched_at": null, "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "4608710a-e126-4a32-afd1-9f3ab66b5aa9", "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-97955770", "created": "2014-01-25T21:48:40Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 0, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:49:04,082 Adding <Server: scenario-server--tempest-97955770> to shared resources of TestSnapshotPattern
+2014-01-25 22:49:04,082 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:49:04,214 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 HTTP/1.1" 200 1352
+2014-01-25 22:49:04,215 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:48:40 GMT', 'content-length': '1352', 'content-type': 'application/json', 'x-compute-request-id': 'req-54cfab6d-c5ef-4982-8f47-50ff45516c6a'})
+RESP BODY: {"server": {"status": "BUILD", "updated": "2014-01-25T21:48:40Z", "hostId": "", "addresses": {}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": "scheduling", "OS-EXT-STS:vm_state": "building", "OS-SRV-USG:launched_at": null, "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "4608710a-e126-4a32-afd1-9f3ab66b5aa9", "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-97955770", "created": "2014-01-25T21:48:40Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 0, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:49:04,216 Waiting for <Server: scenario-server--tempest-97955770> to get to ACTIVE status. Currently in BUILD status
+2014-01-25 22:49:04,216 Sleeping for 50 seconds
+2014-01-25 22:49:54,266 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:49:54,267 Resetting dropped connection: 192.168.103.187
+2014-01-25 22:49:54,599 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 HTTP/1.1" 200 1632
+2014-01-25 22:49:54,599 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:49:31 GMT', 'content-length': '1632', 'content-type': 'application/json', 'x-compute-request-id': 'req-b14e0a8d-b6c3-4b32-b013-7970d4f678c5'})
+RESP BODY: {"server": {"status": "ACTIVE", "updated": "2014-01-25T21:48:44Z", "hostId": "8a41d1ae589a2674fb4100458b3193229ebe82543ea1011930615b09", "addresses": {"tempest.scenario.manager-tempest-497650684-network": [{"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:17:91:ff", "version": 4, "addr": "10.11.0.4", "OS-EXT-IPS:type": "fixed"}]}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": null, "OS-EXT-STS:vm_state": "active", "OS-SRV-USG:launched_at": "2014-01-25T21:48:44.000000", "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "4608710a-e126-4a32-afd1-9f3ab66b5aa9", "security_groups": [{"name": "default"}], "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-97955770", "created": "2014-01-25T21:48:40Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 1, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:49:54,600 
+REQ: curl -i http://192.168.103.187:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 -X GET -H "X-Auth-Project-Id: tempest.scenario.manager-tempest-493579932-tenant" -H "User-Agent: python-novaclient" -H "Accept: application/json" -H "X-Auth-Token: c9281898fea24ad99a4dd458c280ae10"
+
+2014-01-25 22:49:54,714 "GET /v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9 HTTP/1.1" 200 1632
+2014-01-25 22:49:54,715 RESP: [200] CaseInsensitiveDict({'date': 'Sat, 25 Jan 2014 21:49:31 GMT', 'content-length': '1632', 'content-type': 'application/json', 'x-compute-request-id': 'req-508e1bcb-7031-4c11-a707-b37a51c599c9'})
+RESP BODY: {"server": {"status": "ACTIVE", "updated": "2014-01-25T21:48:44Z", "hostId": "8a41d1ae589a2674fb4100458b3193229ebe82543ea1011930615b09", "addresses": {"tempest.scenario.manager-tempest-497650684-network": [{"OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:17:91:ff", "version": 4, "addr": "10.11.0.4", "OS-EXT-IPS:type": "fixed"}]}, "links": [{"href": "http://10.10.10.20:8774/v2/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "self"}, {"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/servers/4608710a-e126-4a32-afd1-9f3ab66b5aa9", "rel": "bookmark"}], "key_name": "scenario-keypair--tempest-918265275", "image": {"id": "0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661", "rel": "bookmark"}]}, "OS-EXT-STS:task_state": null, "OS-EXT-STS:vm_state": "active", "OS-SRV-USG:launched_at": "2014-01-25T21:48:44.000000", "flavor": {"id": "1", "links": [{"href": "http://10.10.10.20:8774/6054eac01ee04665b29ff5aa9aebaca3/flavors/1", "rel": "bookmark"}]}, "id": "4608710a-e126-4a32-afd1-9f3ab66b5aa9", "security_groups": [{"name": "default"}], "OS-SRV-USG:terminated_at": null, "OS-EXT-AZ:availability_zone": "nova", "user_id": "024c12c3c5344b10b61c03549f88a35e", "name": "scenario-server--tempest-97955770", "created": "2014-01-25T21:48:40Z", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "OS-DCF:diskConfig": "MANUAL", "os-extended-volumes:volumes_attached": [], "accessIPv4": "", "accessIPv6": "", "progress": 0, "OS-EXT-STS:power_state": 1, "config_drive": "", "metadata": {}}}
+
+2014-01-25 22:49:54,716 Adding <Server: scenario-server--tempest-97955770> to shared resources of TestSnapshotPattern
+2014-01-25 22:49:54,716 Created server: <Server: scenario-server--tempest-97955770>
+2014-01-25 22:49:54,716 
+REQ: curl -i http://192.168.103.187:9696/v2.0/ports.json?device_id=4608710a-e126-4a32-afd1-9f3ab66b5aa9 -X GET -H "X-Auth-Token: e667ebab26cc4239aba4ae6bb545c8ed" -H "Content-Type: application/json" -H "Accept: application/json" -H "User-Agent: python-neutronclient"
+
+2014-01-25 22:49:54,731 RESP:{'date': 'Sat, 25 Jan 2014 21:49:31 GMT', 'status': '200', 'content-length': '651', 'content-type': 'application/json; charset=UTF-8', 'content-location': 'http://192.168.103.187:9696/v2.0/ports.json?device_id=4608710a-e126-4a32-afd1-9f3ab66b5aa9'} {"ports": [{"status": "ACTIVE", "binding:host_id": "n-cn1", "name": "", "allowed_address_pairs": [], "admin_state_up": true, "network_id": "f2ace3b6-330c-4d06-b476-113bcfe9bfe0", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "extra_dhcp_opts": [], "binding:vif_type": "ovs", "device_owner": "compute:nova", "binding:capabilities": {"port_filter": true}, "mac_address": "fa:16:3e:17:91:ff", "fixed_ips": [{"subnet_id": "23ddfb17-b62d-425e-a54c-1793952835d0", "ip_address": "10.11.0.4"}], "id": "8c68fa83-88b7-4f3b-927e-ac1c183257ac", "security_groups": ["770aa6bf-68e9-4d26-aa38-48176fad4107"], "device_id": "4608710a-e126-4a32-afd1-9f3ab66b5aa9"}]}
+
+2014-01-25 22:49:54,731 
+REQ: curl -i http://192.168.103.187:9696/v2.0/floatingips.json -X POST -H "X-Auth-Token: e667ebab26cc4239aba4ae6bb545c8ed" -H "Content-Type: application/json" -H "Accept: application/json" -H "User-Agent: python-neutronclient" -d '{"floatingip": {"floating_network_id": "bd6d82b4-98e0-4a41-91ba-1138a94bea61", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "port_id": "8c68fa83-88b7-4f3b-927e-ac1c183257ac"}}'
+
+2014-01-25 22:49:55,292 RESP:{'date': 'Sat, 25 Jan 2014 21:49:31 GMT', 'status': '201', 'content-length': '350', 'content-type': 'application/json; charset=UTF-8'} {"floatingip": {"router_id": "eb751ab6-c3c6-4ea0-9954-75c471efd038", "tenant_id": "6054eac01ee04665b29ff5aa9aebaca3", "floating_network_id": "bd6d82b4-98e0-4a41-91ba-1138a94bea61", "fixed_ip_address": "10.11.0.4", "floating_ip_address": "10.10.13.203", "port_id": "8c68fa83-88b7-4f3b-927e-ac1c183257ac", "id": "6bc0af77-f8a2-4756-84e4-eb7ffa7b84c4"}}
+
+2014-01-25 22:49:55,293 Adding {u'router_id': u'eb751ab6-c3c6-4ea0-9954-75c471efd038', u'floating_network_id': u'bd6d82b4-98e0-4a41-91ba-1138a94bea61', u'fixed_ip_address': u'10.11.0.4', u'floating_ip_address': u'10.10.13.203', u'tenant_id': u'6054eac01ee04665b29ff5aa9aebaca3', u'port_id': u'8c68fa83-88b7-4f3b-927e-ac1c183257ac', u'id': u'6bc0af77-f8a2-4756-84e4-eb7ffa7b84c4'} to shared resources of TestSnapshotPattern
+2014-01-25 22:49:59,804 starting thread (client mode): 0x4db01d0L
+2014-01-25 22:49:59,876 Connected (version 2.0, client dropbear_0.53.1)
+2014-01-25 22:49:59,882 kex algos:['diffie-hellman-group1-sha1', 'diffie-hellman-group14-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] server encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] client mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] server mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] client compress:['none'] server compress:['none'] client lang:[''] server lang:[''] kex follows?False
+2014-01-25 22:49:59,882 Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2014-01-25 22:49:59,882 using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2014-01-25 22:49:59,964 Switch to new keys ...
+2014-01-25 22:49:59,969 Adding ssh-rsa host key for 10.10.13.203: c05b6439b198127afdd9c13792d01db4
+2014-01-25 22:49:59,969 Trying SSH key 54901412c9bf58beb8d9fe7d594a88a4
+2014-01-25 22:49:59,972 userauth is OK
+2014-01-25 22:49:59,996 Authentication (publickey) successful!
+2014-01-25 22:50:00,096 EOF in transport thread
+2014-01-25 22:50:00,127 starting thread (client mode): 0x4db0410L
+2014-01-25 22:50:00,132 Connected (version 2.0, client dropbear_0.53.1)
+2014-01-25 22:50:00,134 kex algos:['diffie-hellman-group1-sha1', 'diffie-hellman-group14-sha1'] server key:['ssh-rsa', 'ssh-dss'] client encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] server encrypt:['aes128-ctr', '3des-ctr', 'aes256-ctr', 'aes128-cbc', '3des-cbc', 'aes256-cbc', 'twofish256-cbc', 'twofish-cbc', 'twofish128-cbc'] client mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] server mac:['hmac-sha1-96', 'hmac-sha1', 'hmac-md5'] client compress:['none'] server compress:['none'] client lang:[''] server lang:[''] kex follows?False
+2014-01-25 22:50:00,135 Ciphers agreed: local=aes128-ctr, remote=aes128-ctr
+2014-01-25 22:50:00,135 using kex diffie-hellman-group1-sha1; server key type ssh-rsa; cipher: local aes128-ctr, remote aes128-ctr; mac: local hmac-sha1, remote hmac-sha1; compression: local none, remote none
+2014-01-25 22:50:00,204 Switch to new keys ...
+2014-01-25 22:50:00,229 Adding ssh-rsa host key for 10.10.13.203: c05b6439b198127afdd9c13792d01db4
+2014-01-25 22:50:00,229 Trying SSH key 54901412c9bf58beb8d9fe7d594a88a4
+2014-01-25 22:50:00,231 userauth is OK
+2014-01-25 22:50:00,247 Authentication (publickey) successful!
+2014-01-25 22:50:00,253 [chan 1] Max packet in: 34816 bytes
+2014-01-25 22:50:00,256 [chan 1] Max packet out: 32768 bytes
+2014-01-25 22:50:00,256 Secsh channel 1 opened.
+2014-01-25 22:50:00,261 [chan 1] Sesch channel 1 request ok
+2014-01-25 22:50:00,262 [chan 1] EOF sent (1)
+2014-01-25 22:50:00,329 [chan 1] EOF received (1)
+2014-01-25 22:50:00,430 EOF in transport thread
+2014-01-25 22:50:00,446 curl -i -X DELETE -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'User-Agent: python-glanceclient' http://192.168.103.187:9292/v1/images/0b9e948f-3996-4424-b5fb-3a1b5a2f1661
+2014-01-25 22:50:00,751 
+HTTP/1.1 200 OK
+date: Sat, 25 Jan 2014 21:49:37 GMT
+content-length: 0
+content-type: text/html; charset=UTF-8
+x-openstack-request-id: req-53271b75-83ab-4207-aedc-602095c7d7bd
+
+2014-01-25 22:50:00,752 curl -i -X DELETE -H 'X-Auth-Token: 9269902106aa41ad9e075a9ba5012f0b' -H 'Content-Type: application/octet-stream' -H 'User-Agent: python-glanceclient' http://192.168.103.187:9292/v1/images/ce611698-052b-4fae-abb3-66b814dd59a5
+2014-01-25 22:50:01,783 
+HTTP/1.1 200 OK
+date: Sat, 25 Jan 2014 21:49:38 GMT
+content-length: 0
+content-type: text/html; charset=UTF-8
+x-openstack-request-id: req-307285d2-8f42-46f9-b2eb-c8c4ed01d1c4
+
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

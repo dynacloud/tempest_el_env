@@ -1,0 +1,16 @@
+time: 2013-12-19 21:39:09.736561Z
+tags: worker-0
+test: tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,gate,network,smoke]
+time: 2013-12-19 21:40:20.930311Z
+successful: tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,gate,network,smoke] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

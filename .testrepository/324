@@ -1,0 +1,69 @@
+time: 2014-01-20 15:25:46.123068Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-20 15:29:28.189427Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+2D2
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 182, in test_minimum_basic_scenario
+    self.ssh_to_server()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 150, in ssh_to_server
+    self.linux_client = self.get_remote_client_password(self.floating_ip.floating_ip_address)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 487, in get_remote_client_password
+    return RemoteClient(ip, username, password=password)
+  File "/home/os1/tempest/tempest/common/utils/linux/remote_client.py", line 48, in __init__
+    raise SSHTimeout()
+SSHTimeout: Connection to the %(host)s via SSH timed out.
+User: %(user)s, Password: %(password)s
+0
+]
+tags: -worker-0
+time: 2014-01-20 15:29:49.259253Z
+tags: worker-0
+test: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario)
+time: 2014-01-20 15:29:49.259253Z
+failure: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+455
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 248, in tearDownClass
+    thing.delete()
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 35, in delete
+    self.manager.delete(self)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 228, in delete
+    self._delete("/volumes/%s" % base.getid(volume))
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/base.py", line 162, in _delete
+    resp, body = self.api.client.delete(url)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 216, in delete
+    return self._cs_request(url, 'DELETE', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 174, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 157, in request
+    raise exceptions.from_response(resp, body)
+BadRequest: Invalid volume: Volume status must be available or error, but current status is: in-use (HTTP 400) (Request-ID: req-f3e02b49-7703-4ebc-a8e0-26e691b1b785)
+0
+]
+tags: -worker-0
+time: 2014-01-20 15:29:49.316462Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-20 15:29:49.316462Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

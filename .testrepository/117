@@ -1,0 +1,48 @@
+time: 2014-01-01 21:33:06.285121Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-01 21:33:10.919691Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+45D
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 168, in test_minimum_basic_scenario
+    self.nova_boot()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 102, in nova_boot
+    create_kwargs=create_kwargs)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 412, in create_server
+    self.status_timeout(client.servers, server.id, 'ACTIVE')
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 304, in status_timeout
+    not_found_exception=not_found_exception)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 358, in _status_timeout
+    self.config.compute.build_interval):
+  File "/home/os1/tempest/tempest/test.py", line 290, in call_until_true
+    if func():
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 349, in check_status
+    raise exceptions.BuildErrorException(message)
+BuildErrorException: Server %(server_id)s failed to build and is in ERROR status
+Details: <Server: scenario-server--tempest-698424200> failed to get to expected status.                           In ERROR state.
+0
+]
+tags: -worker-0
+time: 2014-01-01 21:33:12.374926Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-01 21:33:12.374926Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

@@ -1,0 +1,39 @@
+time: 2013-12-19 15:50:19.061666Z
+tags: worker-0
+test: tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,image,volume]
+time: 2013-12-19 15:52:03.209028Z
+failure: tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,image,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+223
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 143, in test_volume_boot_pattern
+    keypair)
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 101, in _ssh_to_server
+    self.floating_ip = self._create_floating_ip2(server)
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 94, in _create_floating_ip2
+    self.floating_ips.setdefault(server, [])
+AttributeError: 'TestVolumeBootPattern' object has no attribute 'floating_ips'
+0
+]
+tags: -worker-0
+time: 2013-12-19 15:52:31.178542Z
+tags: worker-0
+test: process-returncode
+time: 2013-12-19 15:52:31.178542Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

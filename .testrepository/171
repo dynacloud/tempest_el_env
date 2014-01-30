@@ -1,0 +1,16 @@
+time: 2014-01-08 09:11:07.654849Z
+tags: worker-0
+test: tempest.scenario.test_large_ops.TestLargeOpsScenario.test_large_ops_scenario[compute,image]
+time: 2014-01-08 09:12:20.494922Z
+successful: tempest.scenario.test_large_ops.TestLargeOpsScenario.test_large_ops_scenario[compute,image] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

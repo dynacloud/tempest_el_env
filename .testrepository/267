@@ -1,0 +1,75 @@
+time: 2014-01-16 20:10:41.775195Z
+tags: worker-0
+test: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume]
+time: 2014-01-16 20:15:11.352516Z
+failure: tempest.scenario.test_minimum_basic.TestMinimumBasicScenario.test_minimum_basic_scenario[compute,image,network,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+477
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 176, in test_minimum_basic_scenario
+    self.nova_reboot()
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 135, in nova_reboot
+    self._wait_for_server_status('ACTIVE')
+  File "/home/os1/tempest/tempest/scenario/test_minimum_basic.py", line 61, in _wait_for_server_status
+    self.compute_client.servers, server_id, status)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 304, in status_timeout
+    not_found_exception=not_found_exception)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 358, in _status_timeout
+    self.config.compute.build_interval):
+  File "/home/os1/tempest/tempest/test.py", line 290, in call_until_true
+    if func():
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 349, in check_status
+    raise exceptions.BuildErrorException(message)
+BuildErrorException: Server %(server_id)s failed to build and is in ERROR status
+Details: <Server: scenario-server--tempest-1163479031> failed to get to expected status.                           In ERROR state.
+0
+]
+tags: -worker-0
+time: 2014-01-16 20:15:11.429941Z
+tags: worker-0
+test: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario)
+time: 2014-01-16 20:15:11.429941Z
+failure: tearDownClass (tempest.scenario.test_minimum_basic.TestMinimumBasicScenario) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+455
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 248, in tearDownClass
+    thing.delete()
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 35, in delete
+    self.manager.delete(self)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/v1/volumes.py", line 228, in delete
+    self._delete("/volumes/%s" % base.getid(volume))
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/base.py", line 162, in _delete
+    resp, body = self.api.client.delete(url)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 216, in delete
+    return self._cs_request(url, 'DELETE', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 174, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cinderclient/client.py", line 157, in request
+    raise exceptions.from_response(resp, body)
+BadRequest: Invalid volume: Volume status must be available or error, but current status is: in-use (HTTP 400) (Request-ID: req-b2c8076d-8c2a-437e-8f13-fed6b3fc5265)
+0
+]
+tags: -worker-0
+time: 2014-01-16 20:15:11.535129Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-16 20:15:11.535129Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

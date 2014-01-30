@@ -1,0 +1,45 @@
+time: 2014-01-16 20:15:20.135560Z
+tags: worker-0
+test: tempest.scenario.test_server_basic_ops.TestServerBasicOps.test_server_basicops[compute,network]
+time: 2014-01-16 20:23:40.729892Z
+failure: tempest.scenario.test_server_basic_ops.TestServerBasicOps.test_server_basicops[compute,network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+337
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_server_basic_ops.py", line 139, in test_server_basicops
+    self.resume_server()
+  File "/home/os1/tempest/tempest/scenario/test_server_basic_ops.py", line 123, in resume_server
+    self.compute_client.servers, instance_id, 'ACTIVE')
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 304, in status_timeout
+    not_found_exception=not_found_exception)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 358, in _status_timeout
+    self.config.compute.build_interval):
+  File "/home/os1/tempest/tempest/test.py", line 293, in call_until_true
+    time.sleep(sleep_for)
+  File "/usr/local/lib/python2.7/dist-packages/fixtures/_fixtures/timeout.py", line 52, in signal_handler
+    raise TimeoutException()
+TimeoutException
+0
+]
+tags: -worker-0
+time: 2014-01-16 20:24:05.120596Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-16 20:24:05.120596Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

@@ -1,0 +1,50 @@
+time: 2014-01-01 21:32:24.972608Z
+tags: worker-0
+test: tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,gate,network,smoke]
+time: 2014-01-01 21:32:40.840032Z
+failure: tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,gate,network,smoke] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+542
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_network_basic_ops.py", line 300, in test_network_basic_ops
+    self._create_servers(self.image)
+  File "/home/os1/tempest/tempest/scenario/test_network_basic_ops.py", line 250, in _create_servers
+    server = self._create_server(name, network,image)
+  File "/home/os1/tempest/tempest/scenario/test_network_basic_ops.py", line 244, in _create_server
+    server = self.create_server(name=name, image=image, create_kwargs=create_kwargs)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 412, in create_server
+    self.status_timeout(client.servers, server.id, 'ACTIVE')
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 304, in status_timeout
+    not_found_exception=not_found_exception)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 358, in _status_timeout
+    self.config.compute.build_interval):
+  File "/home/os1/tempest/tempest/test.py", line 290, in call_until_true
+    if func():
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 349, in check_status
+    raise exceptions.BuildErrorException(message)
+BuildErrorException: Server %(server_id)s failed to build and is in ERROR status
+Details: <Server: server-smoke-0--tempest-425090671> failed to get to expected status.                           In ERROR state.
+0
+]
+tags: -worker-0
+time: 2014-01-01 21:33:03.168399Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-01 21:33:03.168399Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

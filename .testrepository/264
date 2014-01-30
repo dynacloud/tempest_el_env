@@ -1,0 +1,88 @@
+time: 2014-01-16 10:46:49.187507Z
+tags: worker-0
+test: tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,gate,network,smoke]
+time: 2014-01-16 10:53:07.761185Z
+failure: tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_network_basic_ops[compute,gate,network,smoke] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+788
+2014-01-16 11:53:01,878 Connection to the 10.10.13.204 via SSH timed out.
+User: cirros, Password: None
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops Traceback (most recent call last):
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops   File "/home/os1/tempest/tempest/scenario/test_network_basic_ops.py", line 286, in _check_public_network_connectivity
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops     private_key)
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops   File "/home/os1/tempest/tempest/scenario/manager.py", line 647, in _check_vm_connectivity
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops     timeout=self.config.compute.ssh_timeout),
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops   File "/home/os1/tempest/tempest/scenario/manager.py", line 637, in _is_reachable_via_ssh
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops     return ssh_client.test_connection_auth()
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops   File "/home/os1/tempest/tempest/common/ssh.py", line 149, in test_connection_auth
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops     connection = self._get_ssh_connection()
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops   File "/home/os1/tempest/tempest/common/ssh.py", line 77, in _get_ssh_connection
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops     password=self.password)
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops SSHTimeout: Connection to the 10.10.13.204 via SSH timed out.
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops User: cirros, Password: None
+2014-01-16 11:53:01.878 1603 TRACE tempest.scenario.test_network_basic_ops 
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+19C
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_network_basic_ops.py", line 302, in test_network_basic_ops
+    self._check_public_network_connectivity()
+  File "/home/os1/tempest/tempest/scenario/test_network_basic_ops.py", line 290, in _check_public_network_connectivity
+    raise exc
+SSHTimeout: Connection to the 10.10.13.204 via SSH timed out.
+User: cirros, Password: None
+0
+]
+tags: -worker-0
+time: 2014-01-16 10:53:41.117831Z
+tags: worker-0
+test: tearDownClass (tempest.scenario.test_network_basic_ops.TestNetworkBasicOps)
+time: 2014-01-16 10:53:41.117831Z
+failure: tearDownClass (tempest.scenario.test_network_basic_ops.TestNetworkBasicOps) [ multipart
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+68E
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 272, in tearDownClass
+    cls.isolated_creds.clear_isolated_creds()
+  File "/home/os1/tempest/tempest/common/isolated_creds.py", line 457, in clear_isolated_creds
+    self._clear_isolated_net_resources()
+  File "/home/os1/tempest/tempest/common/isolated_creds.py", line 439, in _clear_isolated_net_resources
+    net_client.remove_interface_router(router['id'], body)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 108, in with_params
+    ret = self.function(instance, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 410, in remove_interface_router
+    "/remove_router_interface", body=body)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 1192, in put
+    headers=headers, params=params)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 1168, in retry_request
+    headers=headers, params=params)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 1111, in do_request
+    self._handle_fault_response(status_code, replybody)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 1081, in _handle_fault_response
+    exception_handler_v20(status_code, des_error_body)
+  File "/usr/local/lib/python2.7/dist-packages/neutronclient/v2_0/client.py", line 93, in exception_handler_v20
+    message=msg)
+NeutronClientException: 404-{u'NeutronError': {u'message': u'Router 2d30b821-f738-41e7-8f06-45e089eea387 could not be found', u'type': u'RouterNotFound', u'detail': u''}}
+0
+]
+tags: -worker-0
+time: 2014-01-16 10:53:41.326823Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-16 10:53:41.326823Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

@@ -1,0 +1,49 @@
+time: 2013-12-20 12:41:08.304013Z
+tags: worker-0
+test: tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,image,volume]
+time: 2013-12-20 12:43:08.046824Z
+failure: tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern[compute,image,volume] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+4FA
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 198, in test_volume_boot_pattern
+    self._delete_server(instance_1st)
+  File "/home/os1/tempest/tempest/scenario/test_volume_boot_pattern.py", line 174, in _delete_server
+    self.compute_client.servers.delete(server)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/v1_1/servers.py", line 688, in delete
+    self._delete("/servers/%s" % base.getid(server))
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/base.py", line 154, in _delete
+    _resp, _body = self.api.client.delete(url)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 238, in delete
+    return self._cs_request(url, 'DELETE', **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 213, in _cs_request
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 195, in _time_request
+    resp, body = self.request(url, method, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/novaclient/client.py", line 189, in request
+    raise exceptions.from_response(resp, body, url, method)
+NotFound: Instance could not be found (HTTP 404) (Request-ID: req-96ec5215-63a2-4c50-9877-7cf1ae1602ab)
+0
+]
+tags: -worker-0
+time: 2013-12-20 12:43:33.972019Z
+tags: worker-0
+test: process-returncode
+time: 2013-12-20 12:43:33.972019Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

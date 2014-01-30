@@ -1,0 +1,48 @@
+time: 2014-01-16 10:37:57.302817Z
+tags: worker-0
+test: tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern[compute,image,network]
+time: 2014-01-16 10:46:00.872182Z
+failure: tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern[compute,image,network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+Content-Type: text/x-traceback;charset="utf8",language="python"
+traceback
+464
+Traceback (most recent call last):
+  File "/home/os1/tempest/tempest/scenario/test_snapshot_pattern.py", line 140, in test_snapshot_pattern
+    self._check_timestamp(self.floating_ip.floating_ip_address)
+  File "/home/os1/tempest/tempest/scenario/test_snapshot_pattern.py", line 102, in _check_timestamp
+    ssh_client = self._ssh_to_server(server_or_ip)
+  File "/home/os1/tempest/tempest/scenario/test_snapshot_pattern.py", line 93, in _ssh_to_server
+    linux_client = self.get_remote_client(server_or_ip)
+  File "/home/os1/tempest/tempest/scenario/manager.py", line 475, in get_remote_client
+    return RemoteClient(ip, username, pkey=private_key)
+  File "/home/os1/tempest/tempest/common/utils/linux/remote_client.py", line 47, in __init__
+    if not self.ssh_client.test_connection_auth():
+  File "/home/os1/tempest/tempest/common/ssh.py", line 149, in test_connection_auth
+    connection = self._get_ssh_connection()
+  File "/home/os1/tempest/tempest/common/ssh.py", line 77, in _get_ssh_connection
+    password=self.password)
+SSHTimeout: Connection to the 10.10.13.204 via SSH timed out.
+User: cirros, Password: None
+0
+]
+tags: -worker-0
+time: 2014-01-16 10:46:43.312825Z
+tags: worker-0
+test: process-returncode
+time: 2014-01-16 10:46:43.312825Z
+failure: process-returncode [ multipart
+Content-Type: test/plain;charset=utf8
+traceback
+C
+returncode 10
+]
+tags: -worker-0

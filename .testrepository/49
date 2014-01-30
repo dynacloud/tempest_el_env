@@ -1,0 +1,16 @@
+time: 2013-12-22 21:28:41.825761Z
+tags: worker-0
+test: tempest.scenario.test_server_basic_ops.TestServerBasicOps.test_server_basicops[compute,network]
+time: 2013-12-22 21:33:04.028286Z
+successful: tempest.scenario.test_server_basic_ops.TestServerBasicOps.test_server_basicops[compute,network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0

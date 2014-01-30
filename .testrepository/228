@@ -1,0 +1,16 @@
+time: 2014-01-09 11:57:23.565883Z
+tags: worker-0
+test: tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern[compute,image,network]
+time: 2014-01-09 12:00:21.498890Z
+successful: tempest.scenario.test_snapshot_pattern.TestSnapshotPattern.test_snapshot_pattern[compute,image,network] [ multipart
+Content-Type: text/plain;charset="utf8"
+pythonlogging:''
+0
+Content-Type: text/plain;charset="utf8"
+stderr
+0
+Content-Type: text/plain;charset="utf8"
+stdout
+0
+]
+tags: -worker-0
