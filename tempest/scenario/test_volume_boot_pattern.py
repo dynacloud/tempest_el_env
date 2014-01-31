@@ -221,7 +221,6 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         # snapshot a volume
         snapshot = self._create_snapshot_from_volume(volume_origin.id)
 
-        time.sleep(1)
 
         # create a 3rd instance from snapshot
         
