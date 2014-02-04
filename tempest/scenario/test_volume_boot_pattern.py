@@ -16,7 +16,7 @@ from tempest.common.utils import data_utils
 from tempest.scenario import manager
 from tempest.test import services
 from tempest.common.utils.data_utils import rand_name
-
+import time
 class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
     """
@@ -120,7 +120,7 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
         #volume_snapshots = self.volume_client.volume_snapshots
         for v in snaps:
             self.volume_client.volume_snapshots.delete(v)    
-
+            #self.delete_timeout(self.volume_client.volume_snapshots, v.id)
      
     def _create_volume_from_snapshot(self, snap_id):
         vol_name = data_utils.rand_name('volume')
@@ -147,6 +147,9 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
     def _delete_volumes(self, volumes):
         for v in volumes:
             self.volume_client.volumes.delete(v)
+    
+    def cinder_create(self):
+        self.volume = self.create_volume()
             
 
 
@@ -235,5 +238,15 @@ class TestVolumeBootPattern(manager.NetworkScenarioTest):
 
         # NOTE(gfidente): ensure resources are in clean state for
         # deletion operations to succeed
-        self._stop_instances([instance_2nd, instance_from_snapshot])
-        self._detach_volumes([volume_origin, volume])
+        self._delete_server(instance_from_snapshot)
+        self._delete_server(instance_2nd)
+
+
+        self._delete_volumes([volume])
+
+
+
+        self._delete_volume_snapshot([snapshot])
+        time.sleep(10)
+        #self.cinder_create()     
+        self._delete_volumes([volume_origin])
